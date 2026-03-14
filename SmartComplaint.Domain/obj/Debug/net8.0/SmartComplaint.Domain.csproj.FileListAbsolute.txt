@@ -1,0 +1,11 @@
+C:\Users\akshit\Desktop\UdemyC#Course\SmartComplaintSystem\SmartComplaint.Domain\bin\Debug\net8.0\SmartComplaint.Domain.deps.json
+C:\Users\akshit\Desktop\UdemyC#Course\SmartComplaintSystem\SmartComplaint.Domain\bin\Debug\net8.0\SmartComplaint.Domain.dll
+C:\Users\akshit\Desktop\UdemyC#Course\SmartComplaintSystem\SmartComplaint.Domain\bin\Debug\net8.0\SmartComplaint.Domain.pdb
+C:\Users\akshit\Desktop\UdemyC#Course\SmartComplaintSystem\SmartComplaint.Domain\obj\Debug\net8.0\SmartComplaint.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\akshit\Desktop\UdemyC#Course\SmartComplaintSystem\SmartComplaint.Domain\obj\Debug\net8.0\SmartComplaint.Domain.AssemblyInfoInputs.cache
+C:\Users\akshit\Desktop\UdemyC#Course\SmartComplaintSystem\SmartComplaint.Domain\obj\Debug\net8.0\SmartComplaint.Domain.AssemblyInfo.cs
+C:\Users\akshit\Desktop\UdemyC#Course\SmartComplaintSystem\SmartComplaint.Domain\obj\Debug\net8.0\SmartComplaint.Domain.csproj.CoreCompileInputs.cache
+C:\Users\akshit\Desktop\UdemyC#Course\SmartComplaintSystem\SmartComplaint.Domain\obj\Debug\net8.0\SmartComplaint.Domain.dll
+C:\Users\akshit\Desktop\UdemyC#Course\SmartComplaintSystem\SmartComplaint.Domain\obj\Debug\net8.0\refint\SmartComplaint.Domain.dll
+C:\Users\akshit\Desktop\UdemyC#Course\SmartComplaintSystem\SmartComplaint.Domain\obj\Debug\net8.0\SmartComplaint.Domain.pdb
+C:\Users\akshit\Desktop\UdemyC#Course\SmartComplaintSystem\SmartComplaint.Domain\obj\Debug\net8.0\ref\SmartComplaint.Domain.dll

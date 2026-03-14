@@ -1,0 +1,6 @@
+@SmartComplaint.API_HostAddress = http://localhost:5281
+
+GET {{SmartComplaint.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

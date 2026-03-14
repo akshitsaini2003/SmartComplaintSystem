@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="SmartComplaint.API/SmartComplaint.API.csproj" />
+  <Project Path="SmartComplaint.Application/SmartComplaint.Application.csproj" />
+  <Project Path="SmartComplaint.Domain/SmartComplaint.Domain.csproj" />
+  <Project Path="SmartComplaint.Infrastructure/SmartComplaint.Infrastructure.csproj" />
+  <Project Path="SmartComplaint.Tests/SmartComplaint.Tests.csproj" />
+</Solution>

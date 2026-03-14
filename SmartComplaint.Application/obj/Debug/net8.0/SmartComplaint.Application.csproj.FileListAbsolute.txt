@@ -1,0 +1,15 @@
+C:\Users\akshit\Desktop\UdemyC#Course\SmartComplaintSystem\SmartComplaint.Application\bin\Debug\net8.0\SmartComplaint.Application.deps.json
+C:\Users\akshit\Desktop\UdemyC#Course\SmartComplaintSystem\SmartComplaint.Application\bin\Debug\net8.0\SmartComplaint.Application.dll
+C:\Users\akshit\Desktop\UdemyC#Course\SmartComplaintSystem\SmartComplaint.Application\bin\Debug\net8.0\SmartComplaint.Application.pdb
+C:\Users\akshit\Desktop\UdemyC#Course\SmartComplaintSystem\SmartComplaint.Application\bin\Debug\net8.0\SmartComplaint.Domain.dll
+C:\Users\akshit\Desktop\UdemyC#Course\SmartComplaintSystem\SmartComplaint.Application\bin\Debug\net8.0\SmartComplaint.Domain.pdb
+C:\Users\akshit\Desktop\UdemyC#Course\SmartComplaintSystem\SmartComplaint.Application\obj\Debug\net8.0\SmartComplaint.Application.csproj.AssemblyReference.cache
+C:\Users\akshit\Desktop\UdemyC#Course\SmartComplaintSystem\SmartComplaint.Application\obj\Debug\net8.0\SmartComplaint.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\akshit\Desktop\UdemyC#Course\SmartComplaintSystem\SmartComplaint.Application\obj\Debug\net8.0\SmartComplaint.Application.AssemblyInfoInputs.cache
+C:\Users\akshit\Desktop\UdemyC#Course\SmartComplaintSystem\SmartComplaint.Application\obj\Debug\net8.0\SmartComplaint.Application.AssemblyInfo.cs
+C:\Users\akshit\Desktop\UdemyC#Course\SmartComplaintSystem\SmartComplaint.Application\obj\Debug\net8.0\SmartComplaint.Application.csproj.CoreCompileInputs.cache
+C:\Users\akshit\Desktop\UdemyC#Course\SmartComplaintSystem\SmartComplaint.Application\obj\Debug\net8.0\SmartCom.2EA01E6A.Up2Date
+C:\Users\akshit\Desktop\UdemyC#Course\SmartComplaintSystem\SmartComplaint.Application\obj\Debug\net8.0\SmartComplaint.Application.dll
+C:\Users\akshit\Desktop\UdemyC#Course\SmartComplaintSystem\SmartComplaint.Application\obj\Debug\net8.0\refint\SmartComplaint.Application.dll
+C:\Users\akshit\Desktop\UdemyC#Course\SmartComplaintSystem\SmartComplaint.Application\obj\Debug\net8.0\SmartComplaint.Application.pdb
+C:\Users\akshit\Desktop\UdemyC#Course\SmartComplaintSystem\SmartComplaint.Application\obj\Debug\net8.0\ref\SmartComplaint.Application.dll
