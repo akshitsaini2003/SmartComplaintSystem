@@ -1,6 +1,6 @@
 # 🎯 Smart Complaint Management System
 
-A **production-ready, enterprise-level** complaint management system built with **ASP.NET Core 8 Web API**, following **Clean Architecture** principles with SQL Server as the database.
+> **Enterprise-level Complaint Management API** built with ASP.NET Core 8, Clean Architecture, SQL Server, JWT Authentication, and Background Jobs.
 
 ---
 
@@ -9,24 +9,34 @@ A **production-ready, enterprise-level** complaint management system built with 
 - [Project Overview](#project-overview)
 - [Tech Stack](#tech-stack)
 - [Architecture](#architecture)
+- [Database Schema](#database-schema)
 - [Features](#features)
-- [Prerequisites](#prerequisites)
-- [Database Setup](#database-setup)
-- [Project Setup](#project-setup)
-- [Configuration](#configuration)
-- [Running the Application](#running-the-application)
 - [API Endpoints](#api-endpoints)
-- [Authentication Guide](#authentication-guide)
-- [Testing](#testing)
+- [Prerequisites](#prerequisites)
+- [Setup & Installation](#setup--installation)
+- [Configuration](#configuration)
+- [Running the Project](#running-the-project)
+- [Default Admin Credentials](#default-admin-credentials)
 - [Background Jobs](#background-jobs)
-- [Logging](#logging)
+- [SLA Policy](#sla-policy)
+- [Email Events](#email-events)
+- [Running Tests](#running-tests)
 - [Project Structure](#project-structure)
 
 ---
 
 ## 📌 Project Overview
 
-Smart Complaint Management System allows users to raise complaints, agents to manage and resolve them, and admins to monitor the entire process — including SLA tracking, analytics dashboards, email notifications, and audit logging.
+The **Smart Complaint Management System** is a production-ready REST API that allows organizations to manage customer complaints end-to-end. It supports three user roles — **User**, **Agent**, and **Admin** — each with their own set of permissions and dashboards.
+
+Key capabilities include:
+- Email OTP-based registration & JWT authentication
+- Smart auto-priority detection using keyword analysis
+- Complaint lifecycle management with strict status transitions
+- SLA breach monitoring via Hangfire background jobs
+- File attachments, comments, feedback, and in-app notifications
+- Role-based analytics dashboards and report filtering
+- Structured logging via Serilog to Console, File, and SQL Server
 
 ---
 
@@ -34,116 +44,289 @@ Smart Complaint Management System allows users to raise complaints, agents to ma
 
 | Technology | Purpose |
 |---|---|
-| ASP.NET Core 8 Web API | Backend Framework |
-| SQL Server (SSMS) | Database |
-| Entity Framework Core 8 | ORM (Code First) |
-| JWT Bearer | Authentication |
-| BCrypt.Net | Password Hashing |
-| MailKit | Email Service (SMTP) |
-| AutoMapper | Entity ↔ DTO Mapping |
-| FluentValidation | Request Validation |
-| Hangfire | Background Jobs |
-| Serilog | Structured Logging |
-| Swagger / Swashbuckle | API Documentation |
-| AspNetCoreRateLimit | Rate Limiting |
-| xUnit + Moq | Unit Testing |
+| **ASP.NET Core 8** | Web API framework |
+| **SQL Server (SSMS)** | Primary database |
+| **Entity Framework Core 8** | ORM — Code First migrations |
+| **JWT Bearer** | Authentication & authorization |
+| **BCrypt.Net** | Password hashing |
+| **MailKit** | SMTP email sending |
+| **AutoMapper** | Entity ↔ DTO mapping |
+| **FluentValidation** | Request validation |
+| **Hangfire** | Background job scheduling |
+| **Serilog** | Structured logging |
+| **Swagger / Swashbuckle** | API documentation |
+| **AspNetCoreRateLimit** | API rate limiting |
+| **xUnit + Moq** | Unit testing |
 
 ---
 
 ## 🏗️ Architecture
 
-Clean Architecture with 5 projects:
+The project follows **Clean Architecture** with 5 projects in one solution:
 
 ```
 SmartComplaintSystem/
 ├── SmartComplaint.API              → Controllers, Middleware, Program.cs
-├── SmartComplaint.Application      → Services Interfaces, DTOs, Validators
+├── SmartComplaint.Application      → Services Interfaces, DTOs, Validators, Mappings
 ├── SmartComplaint.Domain           → Entities, Enums, Constants
-├── SmartComplaint.Infrastructure   → DbContext, Repositories, Email, Jobs
+├── SmartComplaint.Infrastructure   → DbContext, Repositories, Email, Background Jobs
 └── SmartComplaint.Tests            → Unit Tests (xUnit + Moq)
 ```
 
-### Dependency Flow
+**Dependency Flow:**
 ```
 API → Application → Domain
 API → Infrastructure → Application → Domain
 ```
 
+**Patterns Used:**
+- Repository Pattern with Generic Repository `IRepository<T>`
+- Unit of Work Pattern
+- Service Layer (business logic separated from controllers)
+- DTOs for all request/response (entities never exposed directly)
+- Soft Delete (`IsDeleted` flag on all entities)
+- Pagination on all list endpoints
+
+---
+
+## 🗄️ Database Schema
+
+The system uses **11 database tables**:
+
+| Table | Description |
+|---|---|
+| `Users` | All users (User / Agent / Admin roles) |
+| `Categories` | Complaint categories (Network, Billing, etc.) |
+| `Complaints` | Core complaint records |
+| `ComplaintAssignments` | Agent assignments per complaint |
+| `Comments` | Comments on complaints |
+| `Attachments` | File attachments per complaint |
+| `Notifications` | In-app notifications per user |
+| `ComplaintHistory` | Status change audit trail |
+| `SLAPolicies` | SLA hours per priority level |
+| `Feedbacks` | User ratings after resolution |
+| `AuditLogs` | System-wide audit log |
+
 ---
 
 ## ✨ Features
 
-- ✅ JWT Authentication with Access + Refresh Tokens
-- ✅ Email OTP Registration Verification
-- ✅ Forgot / Reset Password via Email Link
-- ✅ Role-Based Authorization (User / Agent / Admin)
-- ✅ Smart Auto-Priority Detection (keyword scanning)
-- ✅ Complaint Status Transition Engine with Validation
-- ✅ Complaint History Tracking
-- ✅ File Attachment Upload (jpg, png, pdf, docx)
-- ✅ Auto Assignment + Round-Robin Logic
-- ✅ In-App Notification System
-- ✅ Email Notifications for all Events (HTML Templates)
-- ✅ Feedback / Rating System (1–5 stars)
-- ✅ SLA Monitoring Background Job (every 15 minutes)
-- ✅ Admin / Agent / User Analytics Dashboards
-- ✅ Reports API with Filters
-- ✅ Serilog Logging (Console + File + SQL Server)
-- ✅ Audit Logging for all Write Operations
-- ✅ Pagination + Filtering on all List APIs
-- ✅ Soft Delete on all entities
-- ✅ Rate Limiting (60 requests/minute)
-- ✅ Global Exception Handling Middleware
-- ✅ Swagger UI with JWT Support
+### 🔐 Authentication & Security
+- Email OTP registration with 10-minute expiry
+- JWT Access Token (15 min) + Refresh Token (7 days)
+- Forgot/Reset password via secure email link (1-hour expiry)
+- BCrypt password hashing
+- Role-based authorization: `User`, `Agent`, `Admin`
+- API Rate Limiting (60 requests/minute)
+- CORS policy
+- Global exception handling middleware
+
+### 📝 Complaint Management
+- Full CRUD with pagination and filters
+- **Smart Priority Auto-Detection** via keyword scan:
+  - `High` → "server down", "emergency", "critical", "outage"
+  - `Medium` → "slow", "intermittent", "degraded", "delay"
+  - `Low` → default fallback
+- **Status Transition Engine** (strict flow):
+  ```
+  Open → InProgress → OnHold → Resolved → Closed
+  ```
+- Complete status change history logged in `ComplaintHistory`
+- File attachment upload (jpg, jpeg, png, pdf, docx — max 5MB)
+- Soft delete on all records
+
+### 👥 User Management
+- Full CRUD for users (Admin only)
+- Role promotion/demotion
+- Agent listing for assignment
+
+### 📋 Assignment Module
+- Manual assignment of complaints to agents
+- Reassignment support
+- In-app + email notification to agent on assignment
+
+### 💬 Comments
+- Users and agents can comment on complaints
+- Comment owner or Admin can delete
+
+### 🔔 Notifications
+- In-app notifications triggered on every major event
+- Mark single/all as read
+- Delete notifications
+
+### ⭐ Feedback
+- Users can rate resolved complaints (1–5 stars)
+- Admin can view aggregate feedback report
+
+### 📊 Analytics Dashboard
+- **Admin:** Total complaints, open/resolved counts, SLA breaches, top agents, category & priority breakdown
+- **Agent:** Assigned complaints, pending vs resolved, average resolution time
+- **User:** Personal complaint stats and feedback average
+- **Reports API:** Filter by date range, category, priority, status, agent
+
+### ⏱️ SLA Monitoring
+- Hangfire background job runs every 15 minutes
+- Detects complaints exceeding SLA limits
+- On breach: sends admin email, creates in-app notification, writes to AuditLogs
+
+### 📦 Logging
+- Serilog configured with 3 sinks: Console, File (daily rolling), SQL Server
+- Request logging middleware logs every HTTP request
+- Structured event logging for auth, complaints, emails, SLA, exceptions
+
+---
+
+## 📡 API Endpoints
+
+### Auth
+```
+POST   /api/auth/register
+POST   /api/auth/verify-otp
+POST   /api/auth/login
+POST   /api/auth/refresh-token
+POST   /api/auth/logout
+POST   /api/auth/forgot-password
+POST   /api/auth/reset-password
+```
+
+### Complaints
+```
+POST   /api/complaints
+GET    /api/complaints
+GET    /api/complaints/{id}
+PUT    /api/complaints/{id}
+DELETE /api/complaints/{id}
+GET    /api/complaints/my
+PATCH  /api/complaints/{id}/status
+```
+
+### Attachments
+```
+POST   /api/complaints/{complaintId}/attach
+GET    /api/complaints/{complaintId}/attach
+DELETE /api/complaints/{complaintId}/attach/{attachmentId}
+```
+
+### Users
+```
+POST   /api/users
+GET    /api/users
+GET    /api/users/{id}
+PUT    /api/users/{id}
+DELETE /api/users/{id}
+GET    /api/users/agents
+PATCH  /api/users/{id}/role
+```
+
+### Assignments
+```
+POST   /api/assignments
+GET    /api/assignments/agent/{agentId}
+PUT    /api/assignments/{id}
+```
+
+### Comments
+```
+POST   /api/comments
+GET    /api/comments/{complaintId}
+DELETE /api/comments/{id}
+```
+
+### Notifications
+```
+GET    /api/notifications
+PATCH  /api/notifications/{id}/read
+PATCH  /api/notifications/read-all
+DELETE /api/notifications/{id}
+```
+
+### Feedback
+```
+POST   /api/feedback
+GET    /api/feedback/{complaintId}
+GET    /api/feedback/report
+```
+
+### Dashboard
+```
+GET    /api/dashboard/admin
+GET    /api/dashboard/agent
+GET    /api/dashboard/user
+GET    /api/dashboard/reports
+```
 
 ---
 
 ## ✅ Prerequisites
 
-Make sure the following are installed before setup:
+Make sure the following are installed before running the project:
 
-| Tool | Version | Download |
-|---|---|---|
-| Visual Studio 2022 | 17.x or later | https://visualstudio.microsoft.com |
-| .NET SDK | 8.0 | https://dotnet.microsoft.com/download |
-| SQL Server | 2019 / 2022 | https://www.microsoft.com/en-us/sql-server |
-| SSMS | 19.x or later | https://aka.ms/ssmsfullsetup |
+- [Visual Studio 2022](https://visualstudio.microsoft.com/) (v17.8+)
+- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+- [SQL Server](https://www.microsoft.com/en-us/sql-server) + [SSMS](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms)
+- A Gmail account with **App Password** enabled (for email sending)
 
 ---
 
-## 🗄️ Database Setup
+## 🚀 Setup & Installation
 
-### Step 1: SQL Server running check karo
+### Step 1: Clone the Repository
 
-SSMS kholo aur `localhost` ya `.\SQLEXPRESS` se connect karo.
+```bash
+git clone https://github.com/yourusername/SmartComplaintSystem.git
+cd SmartComplaintSystem
+```
 
-### Step 2: Migration run karo
+### Step 2: Configure appsettings.json
 
-Visual Studio mein:
+Open `SmartComplaint.API/appsettings.json` and update the following:
 
-**Tools → NuGet Package Manager → Package Manager Console**
+```json
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=.;Database=SmartComplaintDB;Trusted_Connection=True;TrustServerCertificate=True;"
+  },
+  "EmailSettings": {
+    "Host": "smtp.gmail.com",
+    "Port": 587,
+    "Username": "your-email@gmail.com",
+    "Password": "your-gmail-app-password",
+    "FromName": "Smart Complaint System",
+    "FromEmail": "your-email@gmail.com"
+  }
+}
+```
+
+> ⚠️ **Gmail App Password:** Go to Google Account → Security → 2-Step Verification → App Passwords → Generate one for "Mail"
+
+### Step 3: Apply Migrations
+
+Open **Package Manager Console** in Visual Studio:
 
 ```powershell
-# Default Project: SmartComplaint.Infrastructure
+# Set default project to Infrastructure
 Add-Migration InitialCreate -StartupProject SmartComplaint.API
 Update-Database -StartupProject SmartComplaint.API
 ```
 
-### Step 3: Seed Data verify karo
+This will:
+- Create the `SmartComplaintDB` database
+- Apply all 11 tables
+- Automatically seed Categories, SLA Policies, and default Admin user
 
-SSMS mein `SmartComplaintDB` database check karo:
+### Step 4: Build the Solution
 
-```sql
-SELECT * FROM Categories;    -- 6 categories honi chahiye
-SELECT * FROM SLAPolicies;   -- 3 SLA policies honi chahiye
-SELECT * FROM Users;         -- 1 admin user hona chahiye
 ```
+Ctrl + Shift + B
+```
+
+Ensure **0 errors** before running.
 
 ---
 
 ## ⚙️ Configuration
 
-### appsettings.json (complete)
+Full `appsettings.json` reference:
 
 ```json
 {
@@ -160,10 +343,10 @@ SELECT * FROM Users;         -- 1 admin user hona chahiye
   "EmailSettings": {
     "Host": "smtp.gmail.com",
     "Port": 587,
-    "Username": "youremail@gmail.com",
-    "Password": "your-app-password",
+    "Username": "",
+    "Password": "",
     "FromName": "Smart Complaint System",
-    "FromEmail": "youremail@gmail.com"
+    "FromEmail": ""
   },
   "SLASettings": {
     "HighPriorityHours": 4,
@@ -178,7 +361,6 @@ SELECT * FROM Users;         -- 1 admin user hona chahiye
   "IpRateLimiting": {
     "EnableEndpointRateLimiting": false,
     "StackBlockedRequests": false,
-    "RealIpHeader": "X-Real-IP",
     "GeneralRules": [
       {
         "Endpoint": "*",
@@ -186,317 +368,115 @@ SELECT * FROM Users;         -- 1 admin user hona chahiye
         "Limit": 60
       }
     ]
-  },
-  "Serilog": {
-    "MinimumLevel": {
-      "Default": "Information",
-      "Override": {
-        "Microsoft": "Warning",
-        "System": "Warning"
-      }
-    },
-    "WriteTo": [
-      { "Name": "Console" },
-      {
-        "Name": "File",
-        "Args": {
-          "path": "logs/log-.txt",
-          "rollingInterval": "Day"
-        }
-      },
-      {
-        "Name": "MSSqlServer",
-        "Args": {
-          "connectionString": "Server=.;Database=SmartComplaintDB;Trusted_Connection=True;TrustServerCertificate=True;",
-          "tableName": "Logs",
-          "autoCreateSqlTable": true
-        }
-      }
-    ]
   }
 }
 ```
 
-### Gmail SMTP Setup (Email ke liye)
+---
 
-1. Gmail account mein jao → **Google Account Settings**
-2. **Security** → **2-Step Verification** enable karo
-3. **App Passwords** → Select app: `Mail` → Select device: `Windows Computer`
-4. Generated 16-character password ko `EmailSettings:Password` mein daalo
+## ▶️ Running the Project
+
+Press **F5** in Visual Studio or:
+
+```bash
+cd SmartComplaint.API
+dotnet run
+```
+
+Once running, open your browser:
+
+| URL | Description |
+|---|---|
+| `https://localhost:{port}/swagger` | Swagger UI — test all endpoints |
+| `https://localhost:{port}/hangfire` | Hangfire Dashboard — background jobs |
+
+### Using Swagger with JWT
+
+1. Call `POST /api/auth/login` with admin credentials
+2. Copy the `accessToken` from the response
+3. Click **Authorize 🔒** button at the top of Swagger UI
+4. Enter: `Bearer {your_access_token}`
+5. Click **Authorize** → now all protected endpoints are accessible
 
 ---
 
-## 🚀 Running the Application
+## 🔑 Default Admin Credentials
 
-### Step 1: Solution kholo
-
-```
-SmartComplaintSystem.sln → Visual Studio mein open karo
-```
-
-### Step 2: Startup Project set karo
-
-Solution Explorer mein `SmartComplaint.API` pe **Right Click → Set as Startup Project**
-
-### Step 3: Run karo
-
-```
-F5        →  Debug mode
-Ctrl+F5   →  Without debugger
-```
-
-### Step 4: Swagger UI
-
-Browser automatically open hoga:
-```
-https://localhost:{port}/swagger
-```
-
-### Step 5: Hangfire Dashboard
-
-```
-https://localhost:{port}/hangfire
-```
-
----
-
-## 🔐 Authentication Guide
-
-### 1. Register karo
-
-```http
-POST /api/auth/register
-Content-Type: application/json
-
-{
-  "name": "Your Name",
-  "email": "your@email.com",
-  "password": "YourPassword@123"
-}
-```
-
-### 2. OTP Verify karo (email check karo)
-
-```http
-POST /api/auth/verify-otp
-Content-Type: application/json
-
-{
-  "email": "your@email.com",
-  "otp": "123456"
-}
-```
-
-### 3. Login karo
-
-```http
-POST /api/auth/login
-Content-Type: application/json
-
-{
-  "email": "your@email.com",
-  "password": "YourPassword@123"
-}
-```
-
-Response mein `accessToken` milega.
-
-### 4. Swagger mein Authorize karo
-
-Swagger UI mein **Authorize 🔒** button dabao:
-```
-Bearer eyJhbGciOiJIUzI1NiIs...
-```
-
-### Default Admin Credentials
+After running the project for the first time, a default admin is seeded:
 
 ```
 Email:    admin@smartcomplaint.com
 Password: Admin@123
+Role:     Admin
 ```
 
----
-
-## 📡 API Endpoints
-
-### Auth `/api/auth`
-| Method | Endpoint | Description | Auth |
-|---|---|---|---|
-| POST | `/register` | Register new user | ❌ |
-| POST | `/verify-otp` | Verify email OTP | ❌ |
-| POST | `/login` | Login + get tokens | ❌ |
-| POST | `/refresh-token` | Refresh access token | ❌ |
-| POST | `/logout` | Invalidate refresh token | ❌ |
-| POST | `/forgot-password` | Send reset link | ❌ |
-| POST | `/reset-password` | Reset password | ❌ |
-
-### Users `/api/users`
-| Method | Endpoint | Description | Role |
-|---|---|---|---|
-| POST | `/` | Create user | Admin |
-| GET | `/` | Get all users | Admin |
-| GET | `/{id}` | Get user by ID | Admin |
-| PUT | `/{id}` | Update user | Admin |
-| DELETE | `/{id}` | Deactivate user | Admin |
-| GET | `/agents` | Get all agents | Admin |
-| PATCH | `/{id}/role` | Change role | Admin |
-
-### Complaints `/api/complaints`
-| Method | Endpoint | Description | Role |
-|---|---|---|---|
-| POST | `/` | Create complaint | User |
-| GET | `/` | Get all complaints | Admin/Agent |
-| GET | `/{id}` | Get complaint detail | Any |
-| PUT | `/{id}` | Update complaint | Admin |
-| DELETE | `/{id}` | Soft delete | Admin |
-| GET | `/my` | My complaints | User |
-| PATCH | `/{id}/status` | Update status | Admin/Agent |
-
-### Attachments `/api/complaints/{id}/attach`
-| Method | Endpoint | Description | Role |
-|---|---|---|---|
-| POST | `/` | Upload file | Any |
-| GET | `/` | Get attachments | Any |
-| DELETE | `/{attachmentId}` | Delete attachment | Admin |
-
-### Assignments `/api/assignments`
-| Method | Endpoint | Description | Role |
-|---|---|---|---|
-| POST | `/` | Assign complaint | Admin |
-| GET | `/agent/{agentId}` | Agent assignments | Admin/Agent |
-| PUT | `/{id}` | Reassign | Admin |
-
-### Comments `/api/comments`
-| Method | Endpoint | Description | Role |
-|---|---|---|---|
-| POST | `/` | Add comment | Any |
-| GET | `/{complaintId}` | Get comments | Any |
-| DELETE | `/{id}` | Delete comment | Owner/Admin |
-
-### Notifications `/api/notifications`
-| Method | Endpoint | Description | Role |
-|---|---|---|---|
-| GET | `/` | My notifications | Any |
-| PATCH | `/{id}/read` | Mark as read | Any |
-| PATCH | `/read-all` | Mark all read | Any |
-| DELETE | `/{id}` | Delete | Any |
-
-### Feedback `/api/feedback`
-| Method | Endpoint | Description | Role |
-|---|---|---|---|
-| POST | `/` | Submit feedback | User |
-| GET | `/{complaintId}` | Get feedback | Any |
-| GET | `/report` | Average ratings | Admin |
-
-### Dashboard `/api/dashboard`
-| Method | Endpoint | Description | Role |
-|---|---|---|---|
-| GET | `/admin` | Admin stats | Admin |
-| GET | `/agent` | Agent stats | Admin/Agent |
-| GET | `/user` | User stats | Any |
-| GET | `/reports` | Filtered reports | Admin |
+> ⚠️ Change this password immediately in a production environment.
 
 ---
 
 ## ⏱️ Background Jobs
 
-Hangfire runs a recurring job every 15 minutes:
+Hangfire runs a **SLA Monitor Job every 15 minutes** automatically.
 
-**SLA Monitor Job:**
-- Fetches all Open/InProgress complaints
-- Checks if age exceeds SLA limit:
-  - High Priority → 4 hours
-  - Medium Priority → 12 hours
-  - Low Priority → 24 hours
-- On breach: sends admin email + creates notification + logs to AuditLogs
+You can also trigger it manually from the Hangfire Dashboard:
+1. Go to `https://localhost:{port}/hangfire`
+2. Click **Recurring Jobs**
+3. Click **Trigger Now** on `sla-monitor`
 
-**Manual trigger:**
-```
-https://localhost:{port}/hangfire → Recurring Jobs → Trigger
-```
+**What the job does:**
+- Fetches all `Open` and `InProgress` complaints
+- Compares complaint age against SLA policy limits
+- On breach: sends email to Admin, creates in-app notification, logs to AuditLogs
+- Duplicate breach notifications are prevented (checks before inserting)
 
 ---
 
-## 🔍 Smart Priority Detection
+## 📋 SLA Policy
 
-When creating a complaint, priority is auto-detected from Title + Description:
-
-| Keywords | Priority |
+| Priority | Maximum Resolution Time |
 |---|---|
-| server down, not working, emergency, critical, outage | 🔴 High |
-| slow, intermittent, degraded, delay | 🟡 Medium |
-| password, reset, inquiry, question, minor | 🟢 Low |
+| High | 4 hours |
+| Medium | 12 hours |
+| Low | 24 hours |
 
-Manual priority can also be passed in request body.
-
----
-
-## 📊 Complaint Status Flow
-
-```
-Open → InProgress → OnHold → Resolved → Closed
-              ↑__________|
-```
-
-Invalid transitions are rejected with 400 Bad Request.
-Every status change is logged in ComplaintHistory table.
+SLA policies are seeded automatically on first run and can be modified in the `SLAPolicies` table.
 
 ---
 
-## 📝 Logging
+## 📧 Email Events
 
-Three logging destinations configured via Serilog:
+The system sends HTML emails for the following events:
 
-| Destination | Location | Purpose |
-|---|---|---|
-| Console | Terminal output | Development debugging |
-| File | `logs/log-YYYYMMDD.txt` | Daily rolling file |
-| SQL Server | `Logs` table in DB | Persistent queryable logs |
-
-Events logged:
-- Every HTTP request (method, path, status, time)
-- Auth attempts (success/failure)
-- Complaint created/assigned/resolved
-- Email sent/failed
-- SLA breaches
-- Unhandled exceptions (with stack trace)
-
----
-
-## 🧪 Testing
-
-### Unit Tests run karo
-
-```
-Visual Studio → Test → Run All Tests
-Shortcut: Ctrl+R, A
-```
-
-Tests cover:
-- Register — duplicate email validation
-- Register — successful registration + OTP email
-- OTP Verify — invalid OTP
-- OTP Verify — expired OTP
-- Login — user not found
-- Login — unverified email
-
----
-
-## 🗃️ Database Tables (11 Tables)
-
-| Table | Description |
+| Event | Recipient |
 |---|---|
-| Users | User accounts with roles |
-| Categories | Complaint categories |
-| Complaints | Core complaint data |
-| ComplaintAssignments | Agent assignments |
-| Comments | Complaint comments |
-| Attachments | File uploads |
-| Notifications | In-app notifications |
-| ComplaintHistory | Status change log |
-| SLAPolicies | SLA time limits |
-| Feedbacks | User ratings |
-| AuditLogs | System audit trail |
+| OTP Verification | Registered User |
+| Password Reset Link | User who requested it |
+| Complaint Created | Complaint owner |
+| Complaint Assigned | Assigned Agent |
+| Status Changed | Complaint owner |
+| SLA Breach Alert | Admin |
+| Complaint Resolved | Complaint owner |
+
+---
+
+## 🧪 Running Tests
+
+In Visual Studio:
+
+```
+Test → Run All Tests   (or Ctrl + R, A)
+```
+
+Current test coverage includes:
+
+| Test | Description |
+|---|---|
+| `Register_ShouldThrow_WhenEmailAlreadyExists` | Duplicate email check |
+| `Register_ShouldSucceed_WhenEmailIsNew` | Successful registration flow |
+| `VerifyOtp_ShouldThrow_WhenOtpIsInvalid` | Wrong OTP rejection |
+| `VerifyOtp_ShouldThrow_WhenOtpIsExpired` | Expired OTP rejection |
+| `Login_ShouldThrow_WhenUserNotFound` | Invalid email check |
+| `Login_ShouldThrow_WhenEmailNotVerified` | Unverified account check |
 
 ---
 
@@ -508,9 +488,9 @@ SmartComplaintSystem/
 ├── SmartComplaint.API/
 │   ├── Controllers/
 │   │   ├── AuthController.cs
-│   │   ├── UsersController.cs
 │   │   ├── ComplaintsController.cs
 │   │   ├── AttachmentsController.cs
+│   │   ├── UsersController.cs
 │   │   ├── AssignmentsController.cs
 │   │   ├── CommentsController.cs
 │   │   ├── NotificationsController.cs
@@ -520,25 +500,77 @@ SmartComplaintSystem/
 │   │   └── ExceptionMiddleware.cs
 │   ├── wwwroot/uploads/
 │   ├── logs/
-│   ├── Program.cs
-│   └── appsettings.json
+│   ├── appsettings.json
+│   └── Program.cs
 │
 ├── SmartComplaint.Application/
 │   ├── DTOs/
+│   │   ├── AuthDTOs.cs
+│   │   ├── ComplaintDTOs.cs
+│   │   ├── AttachmentDTOs.cs
+│   │   ├── UserDTOs.cs
+│   │   ├── AssignmentDTOs.cs
+│   │   ├── CommentDTOs.cs
+│   │   ├── NotificationDTOs.cs
+│   │   ├── FeedbackDTOs.cs
+│   │   └── DashboardDTOs.cs
 │   ├── Interfaces/
+│   │   ├── IRepository.cs
+│   │   ├── IUnitOfWork.cs
+│   │   ├── IAuthService.cs
+│   │   ├── IEmailService.cs
+│   │   ├── IComplaintService.cs
+│   │   ├── IAttachmentService.cs
+│   │   ├── IUserService.cs
+│   │   ├── IAssignmentService.cs
+│   │   ├── ICommentService.cs
+│   │   ├── INotificationService.cs
+│   │   ├── IFeedbackService.cs
+│   │   ├── IDashboardService.cs
+│   │   ├── ISlaMonitorService.cs
+│   │   └── JwtSettings.cs
 │   └── Mappings/
 │       └── MappingProfile.cs
 │
 ├── SmartComplaint.Domain/
-│   ├── Entities/     (12 files)
-│   └── Enums/        (2 files)
+│   ├── Entities/
+│   │   ├── BaseEntity.cs
+│   │   ├── User.cs
+│   │   ├── Category.cs
+│   │   ├── Complaint.cs
+│   │   ├── ComplaintAssignment.cs
+│   │   ├── Comment.cs
+│   │   ├── Attachment.cs
+│   │   ├── Notification.cs
+│   │   ├── ComplaintHistory.cs
+│   │   ├── SLAPolicy.cs
+│   │   ├── Feedback.cs
+│   │   └── AuditLog.cs
+│   └── Enums/
+│       ├── UserRole.cs
+│       └── ComplaintEnums.cs
 │
 ├── SmartComplaint.Infrastructure/
 │   ├── Data/
+│   │   ├── AppDbContext.cs
+│   │   └── DbSeeder.cs
+│   ├── Migrations/
 │   ├── Repositories/
+│   │   ├── Repository.cs
+│   │   └── UnitOfWork.cs
 │   ├── Email/
-│   ├── Services/     (10 services)
-│   └── Migrations/
+│   │   └── EmailService.cs
+│   └── Services/
+│       ├── AuthService.cs
+│       ├── ComplaintService.cs
+│       ├── AttachmentService.cs
+│       ├── UserService.cs
+│       ├── AssignmentService.cs
+│       ├── CommentService.cs
+│       ├── NotificationService.cs
+│       ├── FeedbackService.cs
+│       ├── DashboardService.cs
+│       └── SlaMonitorService.cs
 │
 └── SmartComplaint.Tests/
     └── AuthServiceTests.cs
@@ -546,25 +578,40 @@ SmartComplaintSystem/
 
 ---
 
-## 📊 Project Stats
+## 🚦 Status Transition Rules
 
-| Item | Count |
-|---|---|
-| API Endpoints | 50+ |
-| Database Tables | 11 |
-| Projects in Solution | 5 |
-| Email Event Types | 7 |
-| Background Jobs | 1 (every 15 min) |
-| Unit Tests | 6 |
-| Architecture | Clean Architecture |
-| Total Development Time | 6 Weeks |
+```
+Open ──────→ InProgress
+InProgress → OnHold
+InProgress → Resolved
+OnHold ────→ InProgress
+Resolved ──→ Closed
+Closed ────→ ❌ (terminal state)
+```
+
+Any invalid transition returns a `400 Bad Request` with a clear error message.
 
 ---
 
-## 👨‍💻 Developer
+## 📊 Project Stats
 
-**Akshit**
-Built with ❤️ using ASP.NET Core 8 Clean Architecture
+| Metric | Value |
+|---|---|
+| Total Phases | 8 |
+| Timeline | 6 Weeks |
+| API Endpoints | 50+ |
+| Database Tables | 11 |
+| Email Events | 7 |
+| Background Jobs | 1 (every 15 min) |
+| Unit Tests | 6 |
+| Architecture | Clean Architecture |
+
+---
+
+## 👤 Author
+
+**Akshit Saini**
+Built with ❤️ using ASP.NET Core 8 & Clean Architecture
 
 ---
 
