@@ -1,0 +1,41 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+<div class="error-page">
+    <div>
+        <div class="error-code">403</div>
+        <h3 class="fw-bold text-dark mt-3">Access Denied</h3>
+        <p class="text-muted mb-4">
+            You don't have permission to access this page.
+        </p>
+        <a href="javascript:history.back()" class="btn btn-outline-secondary me-2">
+            <i class="fas fa-arrow-left me-2"></i>Go Back
+        </a>
+
+        @if (User.IsInRole("Admin"))
+        {
+            <a href="/Dashboard/Admin" class="btn btn-primary">
+                <i class="fas fa-home me-2"></i>Dashboard
+            </a>
+        }
+        else if (User.IsInRole("Agent"))
+        {
+            <a href="/Dashboard/Agent" class="btn btn-primary">
+                <i class="fas fa-home me-2"></i>Dashboard
+            </a>
+        }
+        else if (User.IsInRole("User"))
+        {
+            <a href="/Dashboard/User" class="btn btn-primary">
+                <i class="fas fa-home me-2"></i>Dashboard
+            </a>
+        }
+        else
+        {
+            <a href="/Auth/Login" class="btn btn-primary">
+                <i class="fas fa-sign-in-alt me-2"></i>Login
+            </a>
+        }
+    </div>
+</div>

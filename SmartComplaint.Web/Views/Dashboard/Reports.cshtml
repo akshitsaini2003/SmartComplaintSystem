@@ -1,0 +1,174 @@
+﻿@model SmartComplaint.Web.Models.ReportResultModel
+@{
+    ViewData["Title"] = "Reports";
+    var agents = ViewBag.Agents as List<SmartComplaint.Web.Models.UserModel>
+                 ?? new List<SmartComplaint.Web.Models.UserModel>();
+    var filter = ViewBag.Filter as SmartComplaint.Web.Models.ReportFilterModel
+                 ?? new SmartComplaint.Web.Models.ReportFilterModel();
+}
+
+<div class="page-header">
+    <h2><i class="fas fa-chart-bar me-2 text-primary"></i>Reports</h2>
+    <p>Filter and analyze complaint data</p>
+</div>
+
+<!-- Filter Card -->
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-filter me-2"></i>Filters
+    </div>
+    <div class="card-body">
+        <form method="get" class="row g-3">
+            <div class="col-md-2">
+                <label class="form-label small text-muted">From Date</label>
+                <input type="date" name="FromDate" class="form-control form-control-sm"
+                       value="@filter?.FromDate" />
+            </div>
+            <div class="col-md-2">
+                <label class="form-label small text-muted">To Date</label>
+                <input type="date" name="ToDate" class="form-control form-control-sm"
+                       value="@filter?.ToDate" />
+            </div>
+            <div class="col-md-2">
+                <label class="form-label small text-muted">Priority</label>
+                <select name="Priority" class="form-select form-select-sm">
+                    <option value="">All</option>
+                    @foreach (var p in new[] { "High", "Medium", "Low" })
+                    {
+                        <option value="@p" selected="@(filter?.Priority == p)">@p</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label class="form-label small text-muted">Status</label>
+                <select name="Status" class="form-select form-select-sm">
+                    <option value="">All</option>
+                    @foreach (var s in new[] { "Open", "InProgress", "OnHold", "Resolved", "Closed" })
+                    {
+                        <option value="@s" selected="@(filter?.Status == s)">@s</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label class="form-label small text-muted">Agent</label>
+                <select name="AgentId" class="form-select form-select-sm">
+                    <option value="">All Agents</option>
+                    @foreach (var a in agents)
+                    {
+                        <option value="@a.UserId"
+                                selected="@(filter?.AgentId == a.UserId)">
+                            @a.Name
+                        </option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-2 d-flex align-items-end gap-2">
+                <button type="submit" class="btn btn-primary btn-sm flex-fill">
+                    <i class="fas fa-search me-1"></i>Apply
+                </button>
+                <a href="/Dashboard/Reports" class="btn btn-outline-secondary btn-sm">
+                    <i class="fas fa-times"></i>
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Summary Cards -->
+<div class="row g-3 mb-4">
+    <div class="col-sm-4">
+        <div class="stat-card text-center">
+            <div class="stat-value">@Model.TotalComplaints</div>
+            <div class="stat-label">Total Results</div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="stat-card text-center">
+            <div class="stat-value" style="color:#059669">@Model.Resolved</div>
+            <div class="stat-label">Resolved</div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="stat-card text-center">
+            <div class="stat-value" style="color:#B45309">@Model.Pending</div>
+            <div class="stat-label">Pending</div>
+        </div>
+    </div>
+</div>
+
+<!-- Results Table -->
+<div class="card">
+    <div class="card-header d-flex justify-content-between">
+        <span><i class="fas fa-table me-2"></i>Results (@Model.Complaints.Count)</span>
+    </div>
+    <div class="card-body p-0">
+        @if (!Model.Complaints.Any())
+        {
+            <div class="text-center py-5 text-muted">
+                <i class="fas fa-search fa-3x mb-3 d-block"></i>
+                No complaints found for selected filters
+            </div>
+        }
+        else
+        {
+            <div class="table-responsive">
+                <table class="table table-hover mb-0" id="reportTable">
+                    <thead class="table-light">
+                        <tr>
+                            <th>#ID</th>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var c in Model.Complaints)
+                        {
+                            var sClass = c.Status switch
+                            {
+                                "Open" => "badge-open",
+                                "InProgress" => "badge-inprogress",
+                                "OnHold" => "badge-onhold",
+                                "Resolved" => "badge-resolved",
+                                _ => "badge-closed"
+                            };
+                            var pClass = c.Priority switch
+                            {
+                                "High" => "badge-high",
+                                "Medium" => "badge-medium",
+                                _ => "badge-low"
+                            };
+                            <tr>
+                                <td><span class="text-muted">#@c.ComplaintId</span></td>
+                                <td style="max-width:200px">
+                                    <span class="text-truncate d-block">@c.Title</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-light text-dark border">
+                                        @c.CategoryName
+                                    </span>
+                                </td>
+                                <td><span class="badge @pClass">@c.Priority</span></td>
+                                <td><span class="badge @sClass">@c.Status</span></td>
+                                <td>
+                                    <small class="text-muted">
+                                        @c.CreatedDate.ToString("MMM dd, yyyy")
+                                    </small>
+                                </td>
+                                <td>
+                                    <a href="/Complaints/Detail/@c.ComplaintId"
+                                           class="btn btn-sm btn-outline-primary">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</div>

@@ -60,7 +60,7 @@ public class EmailService : IEmailService
 
     public async Task SendPasswordResetEmailAsync(string toEmail, string name, string resetToken)
     {
-        var resetLink = $"https://yourapp.com/reset-password?token={resetToken}";
+        var resetLink = $"https://localhost:7227/Auth/ResetPassword?token={resetToken}";
         var html = $@"
         <div style='font-family:Arial;max-width:500px;margin:auto;padding:30px;
                      border:1px solid #eee;border-radius:10px;'>

@@ -372,6 +372,22 @@
   },
   {
     "ContainingType": "SmartComplaint.API.Controllers.ComplaintsController",
+    "Method": "GetHistory",
+    "RelativePath": "api/complaints/{id}/history",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartComplaint.API.Controllers.ComplaintsController",
     "Method": "UpdateStatus",
     "RelativePath": "api/complaints/{id}/status",
     "HttpMethod": "PATCH",

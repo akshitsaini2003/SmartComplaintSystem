@@ -1,0 +1,110 @@
+﻿@model SmartComplaint.Web.Models.CreateFeedbackModel
+@{
+    ViewData["Title"] = "Submit Feedback";
+}
+
+<div class="page-header">
+    <h2><i class="fas fa-star me-2 text-warning"></i>Rate Your Experience</h2>
+    <p>Help us improve by sharing your feedback</p>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-comment-alt me-2"></i>
+                Feedback for Complaint #@Model.ComplaintId
+            </div>
+            <div class="card-body">
+                <form method="post" id="feedbackForm">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="ComplaintId" value="@Model.ComplaintId" />
+                    <input type="hidden" asp-for="Rating" id="ratingInput" />
+
+                    <!-- Star Rating -->
+                    <div class="mb-4 text-center">
+                        <label class="form-label fw-semibold d-block mb-3">
+                            How satisfied are you with the resolution?
+                        </label>
+                        <div class="d-flex justify-content-center gap-2" id="starRow">
+                            @for (int i = 1; i <= 5; i++)
+                            {
+                                <i class="fas fa-star fa-2x text-muted"
+                                   style="cursor:pointer;transition:color .15s"
+                                   data-val="@i"
+                                   onclick="setRating(@i)"
+                                   onmouseover="hoverRating(@i)"
+                                   onmouseout="resetStars()"></i>
+                            }
+                        </div>
+                        <p class="text-muted mt-2 small" id="ratingLabel">
+                            Click a star to rate
+                        </p>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Additional Comments (Optional)</label>
+                        <textarea asp-for="Comment" class="form-control" rows="4"
+                                      placeholder="Tell us more about your experience...">
+                        </textarea>
+                        </div>
+
+                        <div class="d-flex gap-2 justify-content-end">
+                            <a href="/Complaints/My" class="btn btn-outline-secondary">
+                                Skip
+                            </a>
+                            <button type="submit" class="btn btn-warning fw-semibold"
+                                    id="submitBtn">
+                                <i class="fas fa-paper-plane me-2"></i>Submit Feedback
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @section Scripts {
+        <script>
+            const labels = ['','Poor','Fair','Good','Very Good','Excellent'];
+            let selectedRating = 0;
+
+            function setRating(val) {
+                selectedRating = val;
+                document.getElementById('ratingInput').value = val;
+                document.getElementById('ratingLabel').textContent =
+                    labels[val] + ' (' + val + '/5)';
+                document.getElementById('ratingLabel').style.color = '#F59E0B';
+                colorStars(val, '#F59E0B');
+            }
+
+            function hoverRating(val) { colorStars(val, '#F59E0B'); }
+
+            function resetStars() {
+                if (selectedRating > 0) colorStars(selectedRating, '#F59E0B');
+                else colorStars(0, '');
+            }
+
+            function colorStars(upTo, color) {
+                document.querySelectorAll('#starRow .fa-star').forEach((s, i) => {
+                    s.style.color = i < upTo ? color : '#D1D5DB';
+                });
+            }
+
+            colorStars(0, '');
+
+            $('#feedbackForm').on('submit', function() {
+                if (selectedRating === 0) {
+                    toastr.warning('Please select a rating first!');
+                    return false;
+                }
+                $('#submitBtn').html('<i class="fas fa-spinner fa-spin me-2"></i>Submitting...')
+                               .prop('disabled', true);
+            });
+
+            @if (TempData["Error"] != null)
+            {
+                    <text>toastr.error('@TempData["Error"]');</text>
+            }
+        </script>
+    }

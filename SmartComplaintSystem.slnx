@@ -4,4 +4,5 @@
   <Project Path="SmartComplaint.Domain/SmartComplaint.Domain.csproj" />
   <Project Path="SmartComplaint.Infrastructure/SmartComplaint.Infrastructure.csproj" />
   <Project Path="SmartComplaint.Tests/SmartComplaint.Tests.csproj" />
+  <Project Path="SmartComplaint.Web/SmartComplaint.Web.csproj" Id="6c83b938-867e-4f06-82f2-d621d78a22f0" />
 </Solution>

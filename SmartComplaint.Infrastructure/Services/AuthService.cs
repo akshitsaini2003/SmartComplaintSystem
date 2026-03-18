@@ -107,6 +107,7 @@ public class AuthService : IAuthService
 
         return new LoginResponseDto
         {
+            UserId = user.UserId,   // ← ADD karo
             AccessToken = accessToken,
             RefreshToken = refreshToken,
             Name = user.Name,

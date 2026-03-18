@@ -1,0 +1,58 @@
+﻿@model List<SmartComplaint.Web.Models.AssignmentModel>
+@{
+    ViewData["Title"] = "My Assignments";
+}
+
+<div class="page-header">
+    <h2><i class="fas fa-tasks me-2 text-primary"></i>My Assignments</h2>
+    <p>Complaints assigned to you</p>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="text-center py-5 text-muted">
+        <i class="fas fa-clipboard-check fa-4x mb-3 d-block"></i>
+        <h5>No assignments yet</h5>
+        <p>You'll see assigned complaints here</p>
+    </div>
+}
+else
+{
+    <div class="card">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Complaint</th>
+                            <th>Assigned On</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var a in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <span class="fw-semibold">#@a.ComplaintId</span>
+                                    <span class="text-muted ms-2">@a.ComplaintTitle</span>
+                                </td>
+                                <td>
+                                    <small class="text-muted">
+                                        @a.AssignedDate.ToString("MMM dd, yyyy")
+                                    </small>
+                                </td>
+                                <td>
+                                    <a href="/Complaints/Detail/@a.ComplaintId"
+                                           class="btn btn-sm btn-outline-primary">
+                                        <i class="fas fa-eye me-1"></i>View
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,140 @@
+﻿@model SmartComplaint.Web.Models.AgentDashboardModel
+@{
+    ViewData["Title"] = "Agent Dashboard";
+}
+
+<div class="page-header">
+    <h2><i class="fas fa-tachometer-alt me-2 text-primary"></i>Agent Dashboard</h2>
+    <p>Welcome back, @User.Identity?.Name! Here's your performance overview.</p>
+</div>
+
+<!-- Stat Cards -->
+<div class="row g-3 mb-4">
+    <div class="col-sm-6 col-xl-3">
+        <div class="stat-card">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <div class="stat-label">Total Assigned</div>
+                    <div class="stat-value">@Model.TotalAssigned</div>
+                </div>
+                <div class="stat-icon" style="background:#EEF2FF">
+                    <i class="fas fa-tasks fa-lg text-primary"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <div class="stat-card">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <div class="stat-label">Pending</div>
+                    <div class="stat-value" style="color:#B45309">
+                        @Model.PendingComplaints
+                    </div>
+                </div>
+                <div class="stat-icon" style="background:#FEF3C7">
+                    <i class="fas fa-hourglass-half fa-lg" style="color:#B45309"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <div class="stat-card">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <div class="stat-label">Resolved</div>
+                    <div class="stat-value" style="color:#059669">
+                        @Model.ResolvedComplaints
+                    </div>
+                </div>
+                <div class="stat-icon" style="background:#D1FAE5">
+                    <i class="fas fa-check-double fa-lg" style="color:#059669"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <div class="stat-card">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <div class="stat-label">Avg Resolution</div>
+                    <div class="stat-value" style="color:#7C3AED">
+                        @Model.AverageResolutionHours.ToString("F1")h
+                    </div>
+                </div>
+                <div class="stat-icon" style="background:#EDE9FE">
+                    <i class="fas fa-clock fa-lg" style="color:#7C3AED"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Performance Chart + Quick Actions -->
+<div class="row g-3">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-chart-bar me-2"></i>My Performance
+            </div>
+            <div class="card-body">
+                <canvas id="agentChart" style="max-height:220px"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-bolt me-2"></i>Quick Actions
+            </div>
+            <div class="card-body d-flex flex-column gap-2">
+                <a href="/Assignments/MyAssignments" class="btn btn-outline-primary text-start">
+                    <i class="fas fa-clipboard-list me-2"></i>View My Assignments
+                </a>
+                <a href="/Complaints/Index" class="btn btn-outline-primary text-start">
+                    <i class="fas fa-file-alt me-2"></i>All Complaints
+                </a>
+                <a href="/Notifications" class="btn btn-outline-primary text-start">
+                    <i class="fas fa-bell me-2"></i>My Notifications
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script>
+        new Chart(document.getElementById('agentChart'), {
+        type: 'bar',
+        data: {
+        labels: ['Pending', 'Resolved', 'Total Assigned'],
+        datasets: [{
+        label: 'Complaints',
+        data: [
+        @Model.PendingComplaints,
+        @Model.ResolvedComplaints,
+        @Model.TotalAssigned
+        ],
+        backgroundColor: ['#FEF3C7','#D1FAE5','#EEF2FF'],
+        borderColor:     ['#B45309','#059669','#4F46E5'],
+        borderWidth: 2,
+        borderRadius: 8,
+        borderSkipped: false
+        }]
+        },
+        options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: {
+        y: {
+        beginAtZero: true,
+        ticks: { stepSize: 1 },
+        grid: { color: '#F1F5F9' }
+        },
+        x: { grid: { display: false } }
+        }
+        }
+        });
+    </script>
+}

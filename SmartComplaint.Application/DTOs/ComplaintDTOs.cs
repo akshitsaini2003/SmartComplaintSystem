@@ -51,3 +51,13 @@ public class PagedResult<T>
     public int PageSize { get; set; }
     public int TotalPages => (int)Math.Ceiling((double)TotalCount / PageSize);
 }
+
+public class ComplaintHistoryDto
+{
+    public int HistoryId { get; set; }
+    public int ComplaintId { get; set; }
+    public string OldStatus { get; set; } = string.Empty;
+    public string NewStatus { get; set; } = string.Empty;
+    public DateTime ChangedDate { get; set; }
+    public string ChangedBy { get; set; } = string.Empty;
+}

@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] — Smart Complaint System</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <!-- DataTables -->
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    <!-- Toastr -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    @await RenderSectionAsync("Styles", required: false)
+
+    <!-- Prevent dark mode flash -->
+    <script>
+            (function() {
+                const t = localStorage.getItem('theme') || 'light';
+                document.documentElement.setAttribute('data-theme', t);
+            })();
+    </script>
+</head>
+<body>
+
+        <!-- Loading Overlay -->
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="spinner-box">
+                <div class="spinner-border text-primary" role="status" style="width:36px;height:36px">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <p id="loadingText">Please wait...</p>
+            </div>
+        </div>
+
+        <!-- Sidebar Overlay (mobile) -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    @if (User.Identity?.IsAuthenticated == true)
+    {
+        <!-- ── Sidebar ─────────────────────────────────── -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <i class="fas fa-headset me-2"></i>
+                <span>SmartComplaint</span>
+            </div>
+            <ul class="sidebar-nav">
+
+                @if (User.IsInRole("Admin"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Dashboard" ? "active" : "")"
+                               href="/Dashboard/Admin">
+                            <i class="fas fa-chart-pie me-2"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Complaints" ? "active" : "")"
+                               href="/Complaints/Index">
+                            <i class="fas fa-file-alt me-2"></i> All Complaints
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Users" ? "active" : "")"
+                               href="/Users/Index">
+                            <i class="fas fa-users me-2"></i> Users
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Assignments" ? "active" : "")"
+                               href="/Assignments/Index">
+                            <i class="fas fa-user-check me-2"></i> Assignments
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Dashboard" && ViewContext.RouteData.Values["action"]?.ToString() == "Reports" ? "active" : "")"
+                               href="/Dashboard/Reports">
+                            <i class="fas fa-chart-bar me-2"></i> Reports
+                        </a>
+                    </li>
+                }
+
+                @if (User.IsInRole("Agent"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Dashboard/Agent">
+                            <i class="fas fa-tachometer-alt me-2"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Assignments/MyAssignments">
+                            <i class="fas fa-tasks me-2"></i> My Assignments
+                        </a>
+                    </li>
+                }
+
+                @if (User.IsInRole("User"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Dashboard/User">
+                            <i class="fas fa-home me-2"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Complaints/My">
+                            <i class="fas fa-file-alt me-2"></i> My Complaints
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Complaints/Create">
+                            <i class="fas fa-plus-circle me-2"></i> New Complaint
+                        </a>
+                    </li>
+                }
+
+                <!-- Common -->
+                <li class="nav-item">
+
+                    <a class="nav-link" href="/Notifications/Index">
+                        <i class="fas fa-bell me-2"></i> Notifications
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ── Main Content ───────────────────────────── -->
+        <div class="main-content" id="mainContent">
+            <!-- Topbar -->
+            <nav class="topbar">
+                <button class="btn btn-link sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="topbar-right d-flex align-items-center gap-3">
+                    @* <!-- Dark Mode Toggle -->
+                    <button class="dark-toggle" id="darkToggle" title="Toggle Dark Mode">
+                        <span id="darkIcon">🌙</span>
+                    </button> *@
+                    <!-- Notification Bell -->
+                    <a href="/Notifications/Index" class="topbar-icon position-relative">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge bg-danger notification-badge d-none" id="notifBadge">0</span>
+                    </a>
+                    <!-- User Dropdown -->
+                    <div class="dropdown">
+                        <button class="btn btn-link dropdown-toggle topbar-user" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-circle me-1"></i>
+                            @User.Identity?.Name
+                            <span class="badge bg-primary ms-1" style="font-size:9px">
+                                @User.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value
+                            </span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <a class="dropdown-item" href="/Auth/Logout">
+                                    <i class="fas fa-sign-out-alt me-2"></i>Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Page Content -->
+            <div class="page-content">
+                @RenderBody()
+            </div>
+        </div>
+    }
+    else
+    {
+        @RenderBody()
+    }
+
+
+    <!-- Global TempData Toastr Messages -->
+    <script>
+            $(document).ready(function () {
+                @if (TempData["Success"] != null)
+                {
+                        <text>toastr.success('@TempData["Success"]');</text>
+                }
+                @if (TempData["Error"] != null)
+                {
+                        <text>toastr.error('@TempData["Error"]');</text>
+                }
+                @if (TempData["Info"] != null)
+                {
+                        <text>toastr.info('@TempData["Info"]');</text>
+                }
+                @if (TempData["Warning"] != null)
+                {
+                        <text>toastr.warning('@TempData["Warning"]');</text>
+                }
+            });
+    </script>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

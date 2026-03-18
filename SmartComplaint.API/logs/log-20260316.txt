@@ -1,0 +1,461 @@
+2026-03-16 13:47:52.961 +05:30 [INF] Start installing Hangfire SQL objects...
+2026-03-16 13:47:58.906 +05:30 [INF] Hangfire SQL objects installed.
+2026-03-16 13:47:59.467 +05:30 [INF] Starting Hangfire Server using job storage: 'SQL Server: DESKTOP-GLF3FPU\SQLEXPRESS@SmartComplaintDB'
+2026-03-16 13:47:59.469 +05:30 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-03-16 13:47:59.478 +05:30 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-03-16 13:47:59.528 +05:30 [INF] Server desktop-glf3fpu:18588:11b1d3ba successfully announced in 24.5234 ms
+2026-03-16 13:47:59.536 +05:30 [INF] Server desktop-glf3fpu:18588:11b1d3ba is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, SqlServerHeartbeatProcess, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-03-16 13:47:59.575 +05:30 [INF] 1 servers were removed due to timeout
+2026-03-16 13:47:59.682 +05:30 [INF] Server desktop-glf3fpu:18588:11b1d3ba all the dispatchers started
+2026-03-16 13:48:06.562 +05:30 [WRN] Stopping the server due to DomainUnload or ProcessExit event...
+2026-03-16 13:48:06.564 +05:30 [INF] Server desktop-glf3fpu:18588:11b1d3ba caught stopping signal...
+2026-03-16 13:48:06.570 +05:30 [INF] Server desktop-glf3fpu:18588:11b1d3ba caught stopped signal...
+2026-03-16 13:48:06.578 +05:30 [WRN] Server desktop-glf3fpu:18588:11b1d3ba caught shutdown signal...
+2026-03-16 13:48:06.590 +05:30 [WRN] Server desktop-glf3fpu:18588:11b1d3ba stopped non-gracefully due to Worker. Outstanding work on those dispatchers could be aborted, and there can be delays in background processing. This server instance will be incorrectly shown as active for a while. To avoid non-graceful shutdowns, investigate what prevents from stopping gracefully and add CancellationToken support for those methods.
+2026-03-16 13:48:06.644 +05:30 [INF] Server desktop-glf3fpu:18588:11b1d3ba successfully reported itself as stopped in 50.0924 ms
+2026-03-16 13:48:06.645 +05:30 [INF] Server desktop-glf3fpu:18588:11b1d3ba has been stopped in total 76.361 ms
+2026-03-16 13:57:31.333 +05:30 [INF] Start installing Hangfire SQL objects...
+2026-03-16 13:57:33.786 +05:30 [INF] Hangfire SQL objects installed.
+2026-03-16 13:57:34.475 +05:30 [INF] Starting Hangfire Server using job storage: 'SQL Server: DESKTOP-GLF3FPU\SQLEXPRESS@SmartComplaintDB'
+2026-03-16 13:57:34.488 +05:30 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-03-16 13:57:34.492 +05:30 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-03-16 13:57:34.610 +05:30 [INF] Server desktop-glf3fpu:23796:e3bcf1e1 successfully announced in 57.5675 ms
+2026-03-16 13:57:34.638 +05:30 [INF] Server desktop-glf3fpu:23796:e3bcf1e1 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, SqlServerHeartbeatProcess, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-03-16 13:57:34.945 +05:30 [INF] Server desktop-glf3fpu:23796:e3bcf1e1 all the dispatchers started
+2026-03-16 13:58:23.919 +05:30 [INF] User logged in: akshitsaini2003@gmail.com | Role: "User"
+2026-03-16 13:58:23.957 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 23599.7202ms
+2026-03-16 13:58:38.892 +05:30 [INF] Execution DelayedJobScheduler recovered from the Faulted state after 00:00:27.8158543 and is in the Running state now
+2026-03-16 13:58:45.785 +05:30 [INF] Execution RecurringJobScheduler recovered from the Faulted state after 00:00:33.4637960 and is in the Running state now
+2026-03-16 13:59:58.795 +05:30 [INF] User logged in: akshitsaini2003@gmail.com | Role: "User"
+2026-03-16 13:59:58.808 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 238.3434ms
+2026-03-16 14:00:43.394 +05:30 [INF] Start installing Hangfire SQL objects...
+2026-03-16 14:00:54.715 +05:30 [INF] Hangfire SQL objects installed.
+2026-03-16 14:00:55.157 +05:30 [INF] Starting Hangfire Server using job storage: 'SQL Server: DESKTOP-GLF3FPU\SQLEXPRESS@SmartComplaintDB'
+2026-03-16 14:00:55.166 +05:30 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-03-16 14:00:55.167 +05:30 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-03-16 14:00:55.217 +05:30 [INF] Server desktop-glf3fpu:24712:16ea1ff4 successfully announced in 25.7763 ms
+2026-03-16 14:00:55.228 +05:30 [INF] Server desktop-glf3fpu:24712:16ea1ff4 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, SqlServerHeartbeatProcess, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-03-16 14:00:55.395 +05:30 [INF] Server desktop-glf3fpu:24712:16ea1ff4 all the dispatchers started
+2026-03-16 14:02:57.876 +05:30 [INF] HTTP POST /api/auth/register responded 200 in 7459.7853ms
+2026-03-16 14:03:14.568 +05:30 [INF] HTTP POST /api/auth/verify-otp responded 200 in 124.4864ms
+2026-03-16 14:09:33.720 +05:30 [INF] Start installing Hangfire SQL objects...
+2026-03-16 14:09:34.019 +05:30 [INF] Hangfire SQL objects installed.
+2026-03-16 14:09:34.737 +05:30 [INF] Starting Hangfire Server using job storage: 'SQL Server: DESKTOP-GLF3FPU\SQLEXPRESS@SmartComplaintDB'
+2026-03-16 14:09:34.741 +05:30 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-03-16 14:09:34.756 +05:30 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-03-16 14:09:34.829 +05:30 [INF] Server desktop-glf3fpu:1304:b4b8411b successfully announced in 23.2124 ms
+2026-03-16 14:09:34.839 +05:30 [INF] Server desktop-glf3fpu:1304:b4b8411b is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, SqlServerHeartbeatProcess, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-03-16 14:09:34.879 +05:30 [INF] 2 servers were removed due to timeout
+2026-03-16 14:09:35.071 +05:30 [INF] Server desktop-glf3fpu:1304:b4b8411b all the dispatchers started
+2026-03-16 14:09:41.042 +05:30 [INF] HTTP POST /api/auth/logout responded 400 in 647.9058ms
+2026-03-16 14:09:48.319 +05:30 [INF] User logged in: akshitsaini2003@gmail.com | Role: "User"
+2026-03-16 14:09:48.325 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 583.6909ms
+2026-03-16 14:09:48.557 +05:30 [INF] HTTP GET /api/notifications responded 200 in 117.4028ms
+2026-03-16 14:09:55.933 +05:30 [INF] HTTP GET /api/notifications responded 200 in 17.9609ms
+2026-03-16 14:10:34.299 +05:30 [INF] HTTP POST /api/auth/logout responded 200 in 35.2175ms
+2026-03-16 14:11:36.926 +05:30 [INF] HTTP POST /api/auth/forgot-password responded 200 in 5101.4905ms
+2026-03-16 14:13:13.583 +05:30 [INF] HTTP GET //lander responded 404 in 0.7117ms
+2026-03-16 14:15:26.460 +05:30 [INF] User logged in: admin@smartcomplaint.com | Role: "Admin"
+2026-03-16 14:15:26.462 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 190.0223ms
+2026-03-16 14:15:54.130 +05:30 [INF] HTTP GET /api/notifications responded 200 in 45.2585ms
+2026-03-16 14:16:09.192 +05:30 [INF] HTTP POST /api/auth/logout responded 200 in 16.5708ms
+2026-03-16 14:16:12.060 +05:30 [INF] User logged in: admin@smartcomplaint.com | Role: "Admin"
+2026-03-16 14:16:12.062 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 157.3101ms
+2026-03-16 14:16:21.620 +05:30 [INF] HTTP POST /api/auth/logout responded 200 in 8.9897ms
+2026-03-16 14:16:35.097 +05:30 [INF] User logged in: akshitsaini2003@gmail.com | Role: "User"
+2026-03-16 14:16:35.099 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 160.9810ms
+2026-03-16 14:16:35.194 +05:30 [INF] HTTP GET /api/notifications responded 200 in 13.9003ms
+2026-03-16 14:16:39.713 +05:30 [INF] HTTP POST /api/auth/logout responded 200 in 26.6602ms
+2026-03-16 14:16:45.304 +05:30 [INF] User logged in: admin@smartcomplaint.com | Role: "Admin"
+2026-03-16 14:16:45.307 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 159.1546ms
+2026-03-16 14:25:37.690 +05:30 [INF] Start installing Hangfire SQL objects...
+2026-03-16 14:25:38.308 +05:30 [INF] Hangfire SQL objects installed.
+2026-03-16 14:25:39.070 +05:30 [INF] Starting Hangfire Server using job storage: 'SQL Server: DESKTOP-GLF3FPU\SQLEXPRESS@SmartComplaintDB'
+2026-03-16 14:25:39.089 +05:30 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-03-16 14:25:39.092 +05:30 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-03-16 14:25:39.166 +05:30 [INF] Server desktop-glf3fpu:21036:26fe272b successfully announced in 30.9527 ms
+2026-03-16 14:25:39.176 +05:30 [INF] Server desktop-glf3fpu:21036:26fe272b is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, SqlServerHeartbeatProcess, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-03-16 14:25:39.234 +05:30 [INF] 1 servers were removed due to timeout
+2026-03-16 14:25:39.491 +05:30 [INF] Server desktop-glf3fpu:21036:26fe272b all the dispatchers started
+2026-03-16 14:25:40.398 +05:30 [INF] HTTP GET /api/notifications responded 200 in 924.0671ms
+2026-03-16 14:26:02.389 +05:30 [INF] HTTP POST /api/auth/logout responded 200 in 321.6382ms
+2026-03-16 14:26:05.429 +05:30 [INF] User logged in: akshitsaini2003@gmail.com | Role: "User"
+2026-03-16 14:26:05.434 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 331.0667ms
+2026-03-16 14:26:05.551 +05:30 [INF] HTTP GET /api/notifications responded 200 in 17.6700ms
+2026-03-16 14:26:13.204 +05:30 [INF] HTTP POST /api/auth/logout responded 200 in 23.3420ms
+2026-03-16 14:26:25.464 +05:30 [INF] User logged in: admin@smartcomplaint.com | Role: "Admin"
+2026-03-16 14:26:25.466 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 184.1290ms
+2026-03-16 14:26:25.568 +05:30 [INF] HTTP GET /api/notifications responded 200 in 10.4719ms
+2026-03-16 14:27:49.594 +05:30 [INF] HTTP POST /api/auth/logout responded 200 in 19.1906ms
+2026-03-16 14:27:59.503 +05:30 [INF] HTTP POST /api/auth/forgot-password responded 200 in 3999.9960ms
+2026-03-16 14:28:35.043 +05:30 [INF] HTTP POST /api/auth/reset-password responded 200 in 211.2782ms
+2026-03-16 14:28:44.750 +05:30 [INF] User logged in: zncq8e@qabq.com | Role: "User"
+2026-03-16 14:28:44.754 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 157.9375ms
+2026-03-16 14:28:44.865 +05:30 [INF] HTTP GET /api/notifications responded 200 in 9.7739ms
+2026-03-16 14:28:49.339 +05:30 [INF] HTTP POST /api/auth/logout responded 200 in 15.0069ms
+2026-03-16 14:28:53.122 +05:30 [INF] User logged in: akshitsaini2003@gmail.com | Role: "User"
+2026-03-16 14:28:53.125 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 160.9298ms
+2026-03-16 14:28:53.204 +05:30 [INF] HTTP GET /api/notifications responded 200 in 9.5750ms
+2026-03-16 14:30:59.700 +05:30 [INF] HTTP GET /api/notifications responded 200 in 13.5031ms
+2026-03-16 14:30:59.880 +05:30 [INF] HTTP GET /api/notifications responded 200 in 6.1673ms
+2026-03-16 14:32:09.790 +05:30 [INF] HTTP GET /api/notifications responded 200 in 20.4286ms
+2026-03-16 14:32:09.932 +05:30 [INF] HTTP GET /api/notifications responded 200 in 14.5793ms
+2026-03-16 14:32:13.878 +05:30 [INF] HTTP GET /api/notifications responded 200 in 10.1307ms
+2026-03-16 14:32:13.949 +05:30 [INF] HTTP GET /api/notifications responded 200 in 5.5984ms
+2026-03-16 14:42:06.506 +05:30 [INF] Start installing Hangfire SQL objects...
+2026-03-16 14:42:08.944 +05:30 [INF] Hangfire SQL objects installed.
+2026-03-16 14:42:09.671 +05:30 [INF] Starting Hangfire Server using job storage: 'SQL Server: DESKTOP-GLF3FPU\SQLEXPRESS@SmartComplaintDB'
+2026-03-16 14:42:09.681 +05:30 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-03-16 14:42:09.684 +05:30 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-03-16 14:42:09.783 +05:30 [INF] Server desktop-glf3fpu:20380:8f558390 successfully announced in 33.0728 ms
+2026-03-16 14:42:09.802 +05:30 [INF] Server desktop-glf3fpu:20380:8f558390 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, SqlServerHeartbeatProcess, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-03-16 14:42:09.842 +05:30 [INF] 1 servers were removed due to timeout
+2026-03-16 14:42:10.113 +05:30 [INF] Server desktop-glf3fpu:20380:8f558390 all the dispatchers started
+2026-03-16 14:42:10.587 +05:30 [INF] HTTP GET /api/notifications responded 200 in 820.7427ms
+2026-03-16 14:42:11.135 +05:30 [INF] HTTP GET /api/complaints/my responded 200 in 1370.4994ms
+2026-03-16 14:42:11.385 +05:30 [INF] HTTP GET /api/notifications responded 200 in 31.4119ms
+2026-03-16 14:42:14.959 +05:30 [INF] HTTP GET /api/complaints/2 responded 200 in 47.7376ms
+2026-03-16 14:42:15.050 +05:30 [INF] HTTP GET /api/comments/2 responded 200 in 71.9597ms
+2026-03-16 14:42:15.092 +05:30 [INF] HTTP GET /api/complaints/2/attach responded 200 in 25.8870ms
+2026-03-16 14:42:15.280 +05:30 [INF] HTTP GET /api/notifications responded 200 in 15.5488ms
+2026-03-16 14:42:48.923 +05:30 [INF] Start installing Hangfire SQL objects...
+2026-03-16 14:42:50.184 +05:30 [INF] Hangfire SQL objects installed.
+2026-03-16 14:42:50.833 +05:30 [INF] Starting Hangfire Server using job storage: 'SQL Server: DESKTOP-GLF3FPU\SQLEXPRESS@SmartComplaintDB'
+2026-03-16 14:42:50.846 +05:30 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-03-16 14:42:50.848 +05:30 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-03-16 14:42:51.051 +05:30 [INF] Server desktop-glf3fpu:16624:33e64030 successfully announced in 171.1697 ms
+2026-03-16 14:42:51.060 +05:30 [INF] Server desktop-glf3fpu:16624:33e64030 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, SqlServerHeartbeatProcess, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-03-16 14:42:51.322 +05:30 [INF] Server desktop-glf3fpu:16624:33e64030 all the dispatchers started
+2026-03-16 14:42:52.046 +05:30 [INF] HTTP GET /api/notifications responded 200 in 619.7322ms
+2026-03-16 14:42:54.567 +05:30 [INF] HTTP GET /api/complaints/my responded 200 in 493.6318ms
+2026-03-16 14:42:54.916 +05:30 [INF] HTTP GET /api/notifications responded 200 in 127.8068ms
+2026-03-16 14:42:56.229 +05:30 [INF] HTTP GET /api/complaints responded 403 in 5.2227ms
+2026-03-16 14:42:56.401 +05:30 [INF] HTTP GET /api/notifications responded 200 in 15.8025ms
+2026-03-16 14:43:18.080 +05:30 [INF] HTTP GET /api/complaints/my responded 200 in 20.5355ms
+2026-03-16 14:43:18.159 +05:30 [INF] HTTP GET /api/notifications responded 200 in 9.9499ms
+2026-03-16 14:43:22.191 +05:30 [INF] HTTP GET /api/complaints responded 403 in 1.1134ms
+2026-03-16 14:43:22.336 +05:30 [INF] HTTP GET /api/notifications responded 200 in 11.3923ms
+2026-03-16 14:43:27.255 +05:30 [INF] HTTP POST /api/auth/logout responded 200 in 192.2016ms
+2026-03-16 14:43:30.509 +05:30 [INF] User logged in: admin@smartcomplaint.com | Role: "Admin"
+2026-03-16 14:43:30.515 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 331.1953ms
+2026-03-16 14:43:30.623 +05:30 [INF] HTTP GET /api/notifications responded 200 in 27.2436ms
+2026-03-16 14:44:10.270 +05:30 [INF] HTTP POST /api/auth/logout responded 200 in 17.1490ms
+2026-03-16 14:44:13.592 +05:30 [INF] User logged in: akshitsaini2003@gmail.com | Role: "User"
+2026-03-16 14:44:13.594 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 174.5121ms
+2026-03-16 14:44:13.681 +05:30 [INF] HTTP GET /api/notifications responded 200 in 9.3079ms
+2026-03-16 14:44:15.016 +05:30 [INF] HTTP GET /api/complaints/my responded 200 in 20.4040ms
+2026-03-16 14:44:15.098 +05:30 [INF] HTTP GET /api/notifications responded 200 in 6.9767ms
+2026-03-16 14:44:19.788 +05:30 [INF] HTTP POST /api/auth/logout responded 200 in 17.0682ms
+2026-03-16 14:44:22.448 +05:30 [INF] User logged in: akshitsaini2003@gmail.com | Role: "User"
+2026-03-16 14:44:22.450 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 154.6951ms
+2026-03-16 14:44:22.545 +05:30 [INF] HTTP GET /api/notifications responded 200 in 9.3667ms
+2026-03-16 14:44:46.262 +05:30 [INF] HTTP GET /api/complaints/my responded 200 in 16.9275ms
+2026-03-16 14:44:46.357 +05:30 [INF] HTTP GET /api/notifications responded 200 in 8.6101ms
+2026-03-16 14:44:49.972 +05:30 [INF] HTTP POST /api/auth/logout responded 200 in 18.9733ms
+2026-03-16 14:44:55.210 +05:30 [INF] User logged in: admin@smartcomplaint.com | Role: "Admin"
+2026-03-16 14:44:55.212 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 151.3973ms
+2026-03-16 14:44:55.308 +05:30 [INF] HTTP GET /api/notifications responded 200 in 5.5094ms
+2026-03-16 14:45:01.893 +05:30 [INF] HTTP GET /api/complaints responded 200 in 35.7605ms
+2026-03-16 14:45:02.156 +05:30 [INF] HTTP GET /api/notifications responded 200 in 7.8797ms
+2026-03-16 14:45:09.377 +05:30 [INF] HTTP GET /api/complaints/2 responded 200 in 26.9582ms
+2026-03-16 14:45:09.485 +05:30 [INF] HTTP GET /api/notifications responded 200 in 10.4503ms
+2026-03-16 14:45:14.920 +05:30 [INF] HTTP GET /api/complaints/2 responded 200 in 7.9892ms
+2026-03-16 14:45:15.003 +05:30 [INF] HTTP GET /api/comments/2 responded 200 in 29.2767ms
+2026-03-16 14:45:15.046 +05:30 [INF] HTTP GET /api/complaints/2/attach responded 200 in 24.8382ms
+2026-03-16 14:45:15.178 +05:30 [INF] HTTP GET /api/notifications responded 200 in 10.1415ms
+2026-03-16 14:45:23.243 +05:30 [INF] HTTP GET /api/complaints/2 responded 200 in 15.5834ms
+2026-03-16 14:45:31.209 +05:30 [INF] HTTP GET /api/complaints responded 200 in 16.5931ms
+2026-03-16 14:45:31.358 +05:30 [INF] HTTP GET /api/notifications responded 200 in 5.6371ms
+2026-03-16 14:45:38.919 +05:30 [INF] HTTP GET /api/complaints/2 responded 200 in 11.6247ms
+2026-03-16 14:45:38.941 +05:30 [INF] HTTP GET /api/comments/2 responded 200 in 8.1711ms
+2026-03-16 14:45:38.965 +05:30 [INF] HTTP GET /api/complaints/2/attach responded 200 in 7.8847ms
+2026-03-16 14:45:39.071 +05:30 [INF] HTTP GET /api/notifications responded 200 in 7.8745ms
+2026-03-16 14:45:51.512 +05:30 [INF] HTTP PATCH /api/complaints/2/status responded 200 in 5922.7585ms
+2026-03-16 14:45:51.554 +05:30 [INF] HTTP GET /api/complaints/2 responded 200 in 8.3872ms
+2026-03-16 14:45:51.579 +05:30 [INF] HTTP GET /api/comments/2 responded 200 in 8.5295ms
+2026-03-16 14:45:51.600 +05:30 [INF] HTTP GET /api/complaints/2/attach responded 200 in 8.5259ms
+2026-03-16 14:45:51.685 +05:30 [INF] HTTP GET /api/notifications responded 200 in 10.3931ms
+2026-03-16 14:46:30.823 +05:30 [INF] HTTP GET /api/complaints/2 responded 200 in 20.2114ms
+2026-03-16 14:46:30.841 +05:30 [INF] HTTP GET /api/comments/2 responded 200 in 8.0225ms
+2026-03-16 14:46:30.863 +05:30 [INF] HTTP GET /api/complaints/2/attach responded 200 in 6.3900ms
+2026-03-16 14:46:37.950 +05:30 [INF] HTTP GET /api/complaints/2 responded 200 in 19.1885ms
+2026-03-16 14:46:37.981 +05:30 [INF] HTTP GET /api/comments/2 responded 200 in 10.0116ms
+2026-03-16 14:46:38.001 +05:30 [INF] HTTP GET /api/complaints/2/attach responded 200 in 8.0638ms
+2026-03-16 14:46:42.923 +05:30 [INF] HTTP GET /api/complaints/2 responded 200 in 16.8870ms
+2026-03-16 14:46:42.945 +05:30 [INF] HTTP GET /api/comments/2 responded 200 in 10.4415ms
+2026-03-16 14:46:42.966 +05:30 [INF] HTTP GET /api/complaints/2/attach responded 200 in 5.7269ms
+2026-03-16 14:46:52.057 +05:30 [INF] HTTP GET /api/complaints responded 200 in 1024.6214ms
+2026-03-16 14:46:52.164 +05:30 [INF] HTTP GET /api/notifications responded 200 in 20.2648ms
+2026-03-16 14:55:04.321 +05:30 [INF] Start installing Hangfire SQL objects...
+2026-03-16 14:55:06.655 +05:30 [INF] Hangfire SQL objects installed.
+2026-03-16 14:55:07.395 +05:30 [INF] Starting Hangfire Server using job storage: 'SQL Server: DESKTOP-GLF3FPU\SQLEXPRESS@SmartComplaintDB'
+2026-03-16 14:55:07.409 +05:30 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-03-16 14:55:07.412 +05:30 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-03-16 14:55:07.548 +05:30 [INF] Server desktop-glf3fpu:14080:0ae9001a successfully announced in 70.8563 ms
+2026-03-16 14:55:07.577 +05:30 [INF] Server desktop-glf3fpu:14080:0ae9001a is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, SqlServerHeartbeatProcess, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-03-16 14:55:07.639 +05:30 [INF] 2 servers were removed due to timeout
+2026-03-16 14:55:07.907 +05:30 [INF] Server desktop-glf3fpu:14080:0ae9001a all the dispatchers started
+2026-03-16 14:55:08.757 +05:30 [INF] HTTP GET /api/notifications responded 200 in 939.2122ms
+2026-03-16 14:55:09.078 +05:30 [INF] HTTP GET /api/complaints responded 200 in 1262.7509ms
+2026-03-16 14:55:09.367 +05:30 [INF] HTTP GET /api/notifications responded 200 in 32.9606ms
+2026-03-16 14:55:21.592 +05:30 [INF] HTTP GET /api/notifications responded 200 in 17.8454ms
+2026-03-16 14:55:27.231 +05:30 [INF] HTTP GET /api/notifications responded 200 in 11.4069ms
+2026-03-16 14:55:30.113 +05:30 [INF] HTTP GET /api/notifications responded 200 in 8.8093ms
+2026-03-16 14:55:30.206 +05:30 [INF] HTTP GET /api/notifications responded 200 in 11.2400ms
+2026-03-16 14:55:43.493 +05:30 [INF] HTTP PATCH /api/notifications/1/read responded 200 in 168.5171ms
+2026-03-16 14:55:43.567 +05:30 [INF] HTTP GET /api/notifications responded 200 in 4.1453ms
+2026-03-16 14:55:43.646 +05:30 [INF] HTTP GET /api/notifications responded 200 in 11.5460ms
+2026-03-16 14:55:47.579 +05:30 [INF] HTTP GET /api/complaints responded 200 in 25.1906ms
+2026-03-16 14:55:47.666 +05:30 [INF] HTTP GET /api/notifications responded 200 in 8.7292ms
+2026-03-16 14:56:14.907 +05:30 [INF] HTTP GET /api/notifications responded 200 in 27.2946ms
+2026-03-16 14:56:19.421 +05:30 [INF] HTTP GET /api/notifications responded 200 in 6.0776ms
+2026-03-16 14:56:33.090 +05:30 [INF] HTTP POST /api/auth/logout responded 200 in 84.3953ms
+2026-03-16 15:04:45.818 +05:30 [INF] Start installing Hangfire SQL objects...
+2026-03-16 15:04:46.212 +05:30 [INF] Hangfire SQL objects installed.
+2026-03-16 15:04:46.985 +05:30 [INF] Starting Hangfire Server using job storage: 'SQL Server: DESKTOP-GLF3FPU\SQLEXPRESS@SmartComplaintDB'
+2026-03-16 15:04:47.019 +05:30 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-03-16 15:04:47.025 +05:30 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-03-16 15:04:47.096 +05:30 [INF] Server desktop-glf3fpu:5576:2bd5fd92 successfully announced in 28.7761 ms
+2026-03-16 15:04:47.111 +05:30 [INF] Server desktop-glf3fpu:5576:2bd5fd92 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, SqlServerHeartbeatProcess, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-03-16 15:04:47.145 +05:30 [INF] 1 servers were removed due to timeout
+2026-03-16 15:04:47.369 +05:30 [INF] Server desktop-glf3fpu:5576:2bd5fd92 all the dispatchers started
+2026-03-16 15:04:48.739 +05:30 [INF] User logged in: akshitsaini2003@gmail.com | Role: "User"
+2026-03-16 15:04:48.769 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 1250.8672ms
+2026-03-16 15:04:49.229 +05:30 [INF] HTTP GET /api/notifications responded 200 in 128.4272ms
+2026-03-16 15:04:51.832 +05:30 [INF] HTTP GET /api/notifications responded 200 in 22.2476ms
+2026-03-16 15:04:51.948 +05:30 [INF] HTTP GET /api/notifications responded 200 in 14.4398ms
+2026-03-16 15:04:53.192 +05:30 [INF] HTTP GET /api/complaints/my responded 200 in 332.4853ms
+2026-03-16 15:04:53.413 +05:30 [INF] HTTP GET /api/notifications responded 200 in 17.2567ms
+2026-03-16 15:04:54.388 +05:30 [INF] HTTP GET /api/notifications responded 200 in 13.3351ms
+2026-03-16 15:04:55.446 +05:30 [INF] HTTP GET /api/complaints/my responded 200 in 21.7816ms
+2026-03-16 15:04:55.533 +05:30 [INF] HTTP GET /api/notifications responded 200 in 9.2660ms
+2026-03-16 15:04:56.707 +05:30 [INF] HTTP GET /api/complaints responded 403 in 5.0377ms
+2026-03-16 15:04:56.834 +05:30 [INF] HTTP GET /api/notifications responded 200 in 14.0975ms
+2026-03-16 15:05:18.524 +05:30 [INF] HTTP POST /api/complaints responded 200 in 7759.4791ms
+2026-03-16 15:05:18.574 +05:30 [INF] HTTP GET /api/complaints/my responded 200 in 17.7709ms
+2026-03-16 15:05:18.673 +05:30 [INF] HTTP GET /api/notifications responded 200 in 13.2826ms
+2026-03-16 15:05:26.019 +05:30 [INF] HTTP POST /api/auth/logout responded 200 in 36.2265ms
+2026-03-16 15:05:30.163 +05:30 [INF] User logged in: admin@smartcomplaint.com | Role: "Admin"
+2026-03-16 15:05:30.166 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 249.5230ms
+2026-03-16 15:05:30.275 +05:30 [INF] HTTP GET /api/notifications responded 200 in 28.9396ms
+2026-03-16 15:05:32.120 +05:30 [INF] HTTP GET /api/complaints responded 200 in 44.4733ms
+2026-03-16 15:05:32.243 +05:30 [INF] HTTP GET /api/notifications responded 200 in 11.8573ms
+2026-03-16 15:05:40.000 +05:30 [INF] HTTP GET /api/users responded 200 in 28.6630ms
+2026-03-16 15:05:40.201 +05:30 [INF] HTTP GET /api/notifications responded 200 in 8.0853ms
+2026-03-16 15:06:06.926 +05:30 [INF] HTTP GET /api/complaints responded 200 in 5405.6002ms
+2026-03-16 15:06:06.998 +05:30 [INF] HTTP GET /api/users/agents responded 200 in 49.6693ms
+2026-03-16 15:06:07.169 +05:30 [INF] HTTP GET /api/notifications responded 200 in 17.2398ms
+2026-03-16 15:06:14.991 +05:30 [INF] Execution RecurringJobScheduler recovered from the Faulted state after 00:00:20.5728269 and is in the Running state now
+2026-03-16 15:06:15.006 +05:30 [INF] Execution DelayedJobScheduler recovered from the Faulted state after 00:00:20.5872673 and is in the Running state now
+2026-03-16 15:06:18.424 +05:30 [INF] HTTP GET /api/notifications responded 200 in 13.2284ms
+2026-03-16 15:06:18.499 +05:30 [INF] HTTP GET /api/notifications responded 200 in 9.2318ms
+2026-03-16 15:06:19.391 +05:30 [INF] HTTP GET /api/notifications responded 200 in 2800.1454ms
+2026-03-16 15:06:55.965 +05:30 [INF] HTTP GET /api/notifications responded 200 in 11.7391ms
+2026-03-16 15:06:56.084 +05:30 [INF] HTTP GET /api/notifications responded 200 in 5.6837ms
+2026-03-16 15:07:00.818 +05:30 [INF] HTTP GET /api/notifications responded 200 in 12.0677ms
+2026-03-16 15:07:01.972 +05:30 [INF] HTTP GET /api/complaints responded 200 in 23.7165ms
+2026-03-16 15:07:02.077 +05:30 [INF] HTTP GET /api/notifications responded 200 in 8.8240ms
+2026-03-16 15:07:03.353 +05:30 [INF] HTTP GET /api/users responded 200 in 14.3896ms
+2026-03-16 15:07:03.461 +05:30 [INF] HTTP GET /api/notifications responded 200 in 8.5185ms
+2026-03-16 15:07:04.551 +05:30 [INF] HTTP GET /api/complaints responded 200 in 41.5027ms
+2026-03-16 15:07:04.583 +05:30 [INF] HTTP GET /api/users/agents responded 200 in 13.7307ms
+2026-03-16 15:07:04.665 +05:30 [INF] HTTP GET /api/notifications responded 200 in 12.1344ms
+2026-03-16 15:07:10.444 +05:30 [INF] HTTP GET /api/notifications responded 200 in 12.7575ms
+2026-03-16 15:07:17.810 +05:30 [INF] HTTP POST /api/auth/logout responded 200 in 32.8557ms
+2026-03-16 15:07:21.124 +05:30 [INF] User logged in: akshitsaini2003@gmail.com | Role: "User"
+2026-03-16 15:07:21.128 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 341.6894ms
+2026-03-16 15:07:21.247 +05:30 [INF] HTTP GET /api/notifications responded 200 in 33.3060ms
+2026-03-16 15:07:29.896 +05:30 [INF] HTTP POST /api/auth/logout responded 200 in 4693.2867ms
+2026-03-16 15:07:34.485 +05:30 [INF] User logged in: admin@smartcomplaint.com | Role: "Admin"
+2026-03-16 15:07:34.489 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 197.9990ms
+2026-03-16 15:07:34.579 +05:30 [INF] HTTP GET /api/notifications responded 200 in 13.3189ms
+2026-03-16 15:08:09.545 +05:30 [INF] HTTP GET /api/notifications responded 200 in 11.0911ms
+2026-03-16 15:08:10.611 +05:30 [INF] HTTP GET /api/notifications responded 200 in 9.0999ms
+2026-03-16 15:08:18.012 +05:30 [INF] HTTP GET /api/users responded 200 in 16.2360ms
+2026-03-16 15:08:18.130 +05:30 [INF] HTTP GET /api/notifications responded 200 in 9.1444ms
+2026-03-16 15:08:18.983 +05:30 [INF] HTTP GET /api/complaints responded 200 in 20.9038ms
+2026-03-16 15:08:19.085 +05:30 [INF] HTTP GET /api/notifications responded 200 in 12.2631ms
+2026-03-16 15:08:23.485 +05:30 [INF] HTTP GET /api/complaints/2 responded 200 in 23.3018ms
+2026-03-16 15:08:23.661 +05:30 [INF] HTTP GET /api/notifications responded 200 in 20.3380ms
+2026-03-16 15:08:26.745 +05:30 [INF] HTTP GET /api/complaints/2 responded 200 in 15.1198ms
+2026-03-16 15:08:26.800 +05:30 [INF] HTTP GET /api/comments/2 responded 200 in 37.3184ms
+2026-03-16 15:08:26.841 +05:30 [INF] HTTP GET /api/complaints/2/attach responded 200 in 20.1640ms
+2026-03-16 15:08:26.998 +05:30 [INF] HTTP GET /api/notifications responded 200 in 12.9200ms
+2026-03-16 15:08:36.311 +05:30 [INF] HTTP PATCH /api/complaints/2/status responded 200 in 3668.7274ms
+2026-03-16 15:08:36.352 +05:30 [INF] HTTP GET /api/complaints/2 responded 200 in 7.6613ms
+2026-03-16 15:08:36.375 +05:30 [INF] HTTP GET /api/comments/2 responded 200 in 7.9948ms
+2026-03-16 15:08:36.394 +05:30 [INF] HTTP GET /api/complaints/2/attach responded 200 in 5.6502ms
+2026-03-16 15:08:36.485 +05:30 [INF] HTTP GET /api/notifications responded 200 in 9.8475ms
+2026-03-16 15:08:49.098 +05:30 [INF] HTTP POST /api/comments responded 200 in 51.5136ms
+2026-03-16 15:08:49.133 +05:30 [INF] HTTP GET /api/complaints/2 responded 200 in 11.5724ms
+2026-03-16 15:08:49.184 +05:30 [INF] HTTP GET /api/comments/2 responded 200 in 37.9565ms
+2026-03-16 15:08:49.202 +05:30 [INF] HTTP GET /api/complaints/2/attach responded 200 in 4.9158ms
+2026-03-16 15:08:49.311 +05:30 [INF] HTTP GET /api/notifications responded 200 in 10.3362ms
+2026-03-16 15:08:57.113 +05:30 [INF] HTTP POST /api/auth/logout responded 200 in 16.2883ms
+2026-03-16 15:08:59.925 +05:30 [INF] User logged in: akshitsaini2003@gmail.com | Role: "User"
+2026-03-16 15:08:59.927 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 258.6718ms
+2026-03-16 15:09:00.010 +05:30 [INF] HTTP GET /api/notifications responded 200 in 7.0065ms
+2026-03-16 15:09:01.391 +05:30 [INF] HTTP GET /api/complaints/my responded 200 in 39.8382ms
+2026-03-16 15:09:01.470 +05:30 [INF] HTTP GET /api/notifications responded 200 in 13.0595ms
+2026-03-16 15:09:03.978 +05:30 [INF] HTTP GET /api/complaints/2 responded 200 in 15.2206ms
+2026-03-16 15:09:04.015 +05:30 [INF] HTTP GET /api/comments/2 responded 200 in 14.4488ms
+2026-03-16 15:09:04.039 +05:30 [INF] HTTP GET /api/complaints/2/attach responded 200 in 10.5468ms
+2026-03-16 15:09:04.125 +05:30 [INF] HTTP GET /api/notifications responded 200 in 7.3723ms
+2026-03-16 15:09:09.871 +05:30 [INF] HTTP GET /api/notifications responded 200 in 2059.4551ms
+2026-03-16 15:09:22.234 +05:30 [INF] HTTP POST /api/feedback responded 400 in 176.4739ms
+2026-03-16 15:09:22.358 +05:30 [INF] HTTP GET /api/notifications responded 200 in 12.2594ms
+2026-03-16 15:09:28.026 +05:30 [INF] HTTP GET /api/complaints/my responded 200 in 22.8081ms
+2026-03-16 15:09:28.099 +05:30 [INF] HTTP GET /api/notifications responded 200 in 4.2954ms
+2026-03-16 15:09:30.001 +05:30 [INF] HTTP GET /api/complaints/2 responded 200 in 16.6659ms
+2026-03-16 15:09:30.025 +05:30 [INF] HTTP GET /api/comments/2 responded 200 in 8.1608ms
+2026-03-16 15:09:30.047 +05:30 [INF] HTTP GET /api/complaints/2/attach responded 200 in 10.0902ms
+2026-03-16 15:09:30.115 +05:30 [INF] HTTP GET /api/notifications responded 200 in 5.0072ms
+2026-03-16 15:09:34.776 +05:30 [INF] HTTP GET /api/notifications responded 200 in 7.6804ms
+2026-03-16 15:09:46.535 +05:30 [INF] HTTP GET /api/complaints/my responded 200 in 9.9576ms
+2026-03-16 15:09:46.610 +05:30 [INF] HTTP GET /api/notifications responded 200 in 7.0255ms
+2026-03-16 15:09:48.711 +05:30 [INF] HTTP GET /api/complaints/2 responded 200 in 9.5328ms
+2026-03-16 15:09:48.753 +05:30 [INF] HTTP GET /api/comments/2 responded 200 in 19.3969ms
+2026-03-16 15:09:48.769 +05:30 [INF] HTTP GET /api/complaints/2/attach responded 200 in 6.0821ms
+2026-03-16 15:09:48.835 +05:30 [INF] HTTP GET /api/notifications responded 200 in 8.0620ms
+2026-03-16 15:09:51.027 +05:30 [INF] HTTP GET /api/notifications responded 200 in 30.6906ms
+2026-03-16 15:09:54.906 +05:30 [INF] HTTP POST /api/feedback responded 400 in 77.9782ms
+2026-03-16 15:09:54.980 +05:30 [INF] HTTP GET /api/notifications responded 200 in 7.5761ms
+2026-03-16 15:10:05.295 +05:30 [INF] HTTP GET /api/complaints/2 responded 200 in 11.1273ms
+2026-03-16 15:10:05.315 +05:30 [INF] HTTP GET /api/comments/2 responded 200 in 7.7783ms
+2026-03-16 15:10:05.335 +05:30 [INF] HTTP GET /api/complaints/2/attach responded 200 in 8.6336ms
+2026-03-16 15:10:09.984 +05:30 [INF] HTTP GET /api/complaints/3 responded 200 in 15.3643ms
+2026-03-16 15:10:10.003 +05:30 [INF] HTTP GET /api/comments/3 responded 200 in 5.6537ms
+2026-03-16 15:10:10.023 +05:30 [INF] HTTP GET /api/complaints/3/attach responded 200 in 6.4925ms
+2026-03-16 15:10:10.100 +05:30 [INF] HTTP GET /api/notifications responded 200 in 6.4829ms
+2026-03-16 15:10:14.397 +05:30 [INF] HTTP GET /api/complaints/2 responded 200 in 9.0523ms
+2026-03-16 15:10:14.417 +05:30 [INF] HTTP GET /api/comments/2 responded 200 in 3.3278ms
+2026-03-16 15:10:14.437 +05:30 [INF] HTTP GET /api/complaints/2/attach responded 200 in 4.8669ms
+2026-03-16 15:10:14.509 +05:30 [INF] HTTP GET /api/notifications responded 200 in 5.1526ms
+2026-03-16 15:10:20.512 +05:30 [INF] HTTP GET /api/notifications responded 200 in 5.5203ms
+2026-03-16 15:11:37.685 +05:30 [WRN] Stopping the server due to DomainUnload or ProcessExit event...
+2026-03-16 15:11:37.688 +05:30 [INF] Server desktop-glf3fpu:5576:2bd5fd92 caught stopping signal...
+2026-03-16 15:11:37.718 +05:30 [INF] Server desktop-glf3fpu:5576:2bd5fd92 caught stopped signal...
+2026-03-16 15:11:37.724 +05:30 [WRN] Server desktop-glf3fpu:5576:2bd5fd92 caught shutdown signal...
+2026-03-16 15:11:37.726 +05:30 [INF] Server desktop-glf3fpu:5576:2bd5fd92 All dispatchers stopped
+2026-03-16 15:11:37.770 +05:30 [INF] Server desktop-glf3fpu:5576:2bd5fd92 successfully reported itself as stopped in 39.5047 ms
+2026-03-16 15:11:37.772 +05:30 [INF] Server desktop-glf3fpu:5576:2bd5fd92 has been stopped in total 54.6048 ms
+2026-03-16 15:15:04.704 +05:30 [INF] Start installing Hangfire SQL objects...
+2026-03-16 15:15:05.942 +05:30 [INF] Hangfire SQL objects installed.
+2026-03-16 15:15:06.797 +05:30 [INF] Starting Hangfire Server using job storage: 'SQL Server: DESKTOP-GLF3FPU\SQLEXPRESS@SmartComplaintDB'
+2026-03-16 15:15:06.807 +05:30 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-03-16 15:15:06.809 +05:30 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-03-16 15:15:06.882 +05:30 [INF] Server desktop-glf3fpu:26984:1c20c91d successfully announced in 33.082 ms
+2026-03-16 15:15:06.891 +05:30 [INF] Server desktop-glf3fpu:26984:1c20c91d is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, SqlServerHeartbeatProcess, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-03-16 15:15:07.171 +05:30 [INF] Server desktop-glf3fpu:26984:1c20c91d all the dispatchers started
+2026-03-16 15:15:08.132 +05:30 [INF] HTTP GET /api/notifications responded 200 in 818.4316ms
+2026-03-16 15:15:09.795 +05:30 [INF] HTTP GET /api/complaints/my responded 200 in 399.1334ms
+2026-03-16 15:15:10.043 +05:30 [INF] HTTP GET /api/notifications responded 200 in 22.7613ms
+2026-03-16 15:15:11.192 +05:30 [INF] HTTP GET /api/complaints/2 responded 200 in 50.4655ms
+2026-03-16 15:15:11.260 +05:30 [INF] HTTP GET /api/comments/2 responded 200 in 46.2685ms
+2026-03-16 15:15:11.305 +05:30 [INF] HTTP GET /api/complaints/2/attach responded 200 in 25.3370ms
+2026-03-16 15:15:11.502 +05:30 [INF] HTTP GET /api/notifications responded 200 in 14.6709ms
+2026-03-16 15:15:20.505 +05:30 [INF] HTTP GET /api/notifications responded 200 in 12.8382ms
+2026-03-16 15:15:25.522 +05:30 [INF] HTTP POST /api/feedback responded 200 in 238.0495ms
+2026-03-16 15:15:25.575 +05:30 [INF] HTTP GET /api/complaints/my responded 200 in 22.0434ms
+2026-03-16 15:15:25.655 +05:30 [INF] HTTP GET /api/notifications responded 200 in 10.9581ms
+2026-03-16 15:15:27.327 +05:30 [INF] HTTP GET /api/complaints/2 responded 200 in 9.9434ms
+2026-03-16 15:15:27.351 +05:30 [INF] HTTP GET /api/comments/2 responded 200 in 10.8475ms
+2026-03-16 15:15:27.372 +05:30 [INF] HTTP GET /api/complaints/2/attach responded 200 in 7.5585ms
+2026-03-16 15:15:27.464 +05:30 [INF] HTTP GET /api/notifications responded 200 in 12.5208ms
+2026-03-16 15:16:54.480 +05:30 [INF] HTTP GET /api/complaints/2 responded 200 in 78.1248ms
+2026-03-16 15:16:54.602 +05:30 [INF] HTTP GET /api/comments/2 responded 200 in 44.5793ms
+2026-03-16 15:16:54.646 +05:30 [INF] HTTP GET /api/notifications responded 200 in 14.3826ms
+2026-03-16 15:16:54.713 +05:30 [INF] HTTP GET /api/complaints/2/attach responded 200 in 64.8854ms
+2026-03-16 15:16:55.400 +05:30 [INF] HTTP GET /api/notifications responded 200 in 508.7162ms
+2026-03-16 15:17:00.903 +05:30 [INF] HTTP GET /api/complaints/2 responded 200 in 2673.7371ms
+2026-03-16 15:17:00.970 +05:30 [INF] HTTP GET /api/comments/2 responded 200 in 40.6828ms
+2026-03-16 15:17:01.590 +05:30 [INF] HTTP GET /api/complaints/2/attach responded 200 in 594.2810ms
+2026-03-16 15:17:02.883 +05:30 [INF] HTTP GET /api/complaints/my responded 200 in 1347.8946ms
+2026-03-16 15:17:03.025 +05:30 [INF] HTTP GET /api/notifications responded 200 in 20.5616ms
+2026-03-16 15:17:05.108 +05:30 [INF] HTTP GET /api/complaints/2 responded 200 in 8.6437ms
+2026-03-16 15:17:05.129 +05:30 [INF] HTTP GET /api/comments/2 responded 200 in 7.0280ms
+2026-03-16 15:17:05.150 +05:30 [INF] HTTP GET /api/complaints/2/attach responded 200 in 6.7554ms
+2026-03-16 15:17:05.242 +05:30 [INF] HTTP GET /api/notifications responded 200 in 8.3296ms
+2026-03-16 15:18:05.794 +05:30 [INF] HTTP GET /api/complaints/2 responded 200 in 12.5855ms
+2026-03-16 15:18:05.822 +05:30 [INF] HTTP GET /api/comments/2 responded 200 in 11.8849ms
+2026-03-16 15:18:05.837 +05:30 [INF] HTTP GET /api/complaints/2/attach responded 200 in 4.6178ms
+2026-03-16 15:18:05.939 +05:30 [INF] HTTP GET /api/complaints/2 responded 200 in 32.3029ms
+2026-03-16 15:18:06.022 +05:30 [INF] HTTP GET /api/comments/2 responded 200 in 19.3151ms
+2026-03-16 15:18:06.060 +05:30 [INF] HTTP GET /api/complaints/2/attach responded 200 in 20.4109ms
+2026-03-16 15:18:06.177 +05:30 [INF] HTTP GET /api/notifications responded 200 in 85.7812ms
+2026-03-16 15:18:06.259 +05:30 [INF] HTTP GET /api/notifications responded 200 in 5.1574ms
+2026-03-16 15:18:09.039 +05:30 [INF] HTTP GET /api/notifications responded 200 in 10.2644ms
+2026-03-16 15:18:12.847 +05:30 [INF] HTTP POST /api/feedback responded 400 in 179.9939ms
+2026-03-16 15:18:12.997 +05:30 [INF] HTTP GET /api/notifications responded 200 in 21.5084ms
+2026-03-16 15:18:16.091 +05:30 [INF] HTTP GET /api/complaints/my responded 200 in 29.0842ms
+2026-03-16 15:18:16.183 +05:30 [INF] HTTP GET /api/notifications responded 200 in 7.3003ms
+2026-03-16 15:18:18.022 +05:30 [INF] HTTP GET /api/complaints/2 responded 200 in 14.1503ms
+2026-03-16 15:18:18.042 +05:30 [INF] HTTP GET /api/comments/2 responded 200 in 8.6377ms
+2026-03-16 15:18:18.062 +05:30 [INF] HTTP GET /api/complaints/2/attach responded 200 in 9.5838ms
+2026-03-16 15:18:18.147 +05:30 [INF] HTTP GET /api/notifications responded 200 in 8.8411ms
+2026-03-16 15:18:23.242 +05:30 [INF] HTTP POST /api/auth/logout responded 200 in 82.6081ms
+2026-03-16 15:18:26.731 +05:30 [INF] User logged in: akshitsaini2003@gmail.com | Role: "User"
+2026-03-16 15:18:26.739 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 317.8215ms
+2026-03-16 15:18:26.837 +05:30 [INF] HTTP GET /api/notifications responded 200 in 10.6550ms
+2026-03-16 15:18:34.022 +05:30 [INF] HTTP POST /api/auth/logout responded 200 in 19.5301ms
+2026-03-16 15:18:37.729 +05:30 [INF] User logged in: admin@smartcomplaint.com | Role: "Admin"
+2026-03-16 15:18:37.734 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 164.5359ms
+2026-03-16 15:18:37.863 +05:30 [INF] HTTP GET /api/notifications responded 200 in 31.2511ms
+2026-03-16 15:18:39.277 +05:30 [INF] HTTP GET /api/notifications responded 200 in 7.1202ms
+2026-03-16 15:18:40.843 +05:30 [INF] HTTP GET /api/users responded 200 in 22.5131ms
+2026-03-16 15:18:40.964 +05:30 [INF] HTTP GET /api/notifications responded 200 in 8.4306ms
+2026-03-16 15:18:41.939 +05:30 [INF] HTTP GET /api/complaints responded 200 in 34.4911ms
+2026-03-16 15:18:42.072 +05:30 [INF] HTTP GET /api/notifications responded 200 in 13.7630ms
+2026-03-16 15:18:45.163 +05:30 [INF] HTTP GET /api/complaints/2 responded 200 in 10.2565ms
+2026-03-16 15:18:45.192 +05:30 [INF] HTTP GET /api/comments/2 responded 200 in 9.1674ms
+2026-03-16 15:18:45.224 +05:30 [INF] HTTP GET /api/complaints/2/attach responded 200 in 6.2958ms
+2026-03-16 15:18:45.311 +05:30 [INF] HTTP GET /api/notifications responded 200 in 10.9722ms
+2026-03-16 15:19:05.942 +05:30 [INF] HTTP PATCH /api/complaints/2/status responded 200 in 4497.3196ms
+2026-03-16 15:19:06.267 +05:30 [INF] HTTP GET /api/complaints/2 responded 200 in 284.2467ms
+2026-03-16 15:19:06.328 +05:30 [INF] HTTP GET /api/comments/2 responded 200 in 45.0015ms
+2026-03-16 15:19:06.510 +05:30 [INF] HTTP GET /api/complaints/2/attach responded 200 in 167.4099ms
+2026-03-16 15:19:06.636 +05:30 [INF] HTTP GET /api/notifications responded 200 in 32.5895ms
+2026-03-16 15:19:10.148 +05:30 [INF] HTTP GET /api/users responded 200 in 282.3288ms
+2026-03-16 15:19:10.379 +05:30 [INF] HTTP GET /api/notifications responded 200 in 106.1782ms
+2026-03-16 15:19:15.862 +05:30 [INF] HTTP GET /api/complaints responded 200 in 3972.6005ms
+2026-03-16 15:19:15.982 +05:30 [INF] HTTP GET /api/notifications responded 200 in 52.8295ms

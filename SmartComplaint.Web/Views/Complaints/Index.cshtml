@@ -1,0 +1,206 @@
+﻿@model List<SmartComplaint.Web.Models.ComplaintListModel>
+@{
+    ViewData["Title"] = "All Complaints";
+    int currentPage = ViewBag.CurrentPage ?? 1;
+    int totalPages = ViewBag.TotalPages ?? 1;
+}
+
+<div class="page-header d-flex justify-content-between align-items-center">
+    <div>
+        @if (ViewBag.IsAgent == true)
+        {
+            <h2><i class="fas fa-tasks me-2 text-primary"></i>My Assigned Complaints</h2>
+            <p>Complaints assigned to you</p>
+        }
+        else
+        {
+            <h2><i class="fas fa-file-alt me-2 text-primary"></i>All Complaints</h2>
+            <p>Manage and track all complaints</p>
+        }
+    </div>
+</div>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show">
+        <i class="fas fa-check-circle me-2"></i>@TempData["Success"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show">
+        <i class="fas fa-exclamation-circle me-2"></i>@TempData["Error"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+<!-- Filters -->
+<div class="card mb-3">
+    <div class="card-body py-3">
+        <form method="get" class="row g-2 align-items-end">
+            <div class="col-md-3">
+                <label class="form-label small text-muted">Status</label>
+                <select name="status" class="form-select form-select-sm">
+                    <option value="">All Statuses</option>
+                    @foreach (var s in new[] { "Open", "InProgress", "OnHold", "Resolved", "Closed" })
+                    {
+                        <option value="@s" selected="@(ViewBag.Status == s)">@s</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label small text-muted">Priority</label>
+                <select name="priority" class="form-select form-select-sm">
+                    <option value="">All Priorities</option>
+                    @foreach (var p in new[] { "High", "Medium", "Low" })
+                    {
+                        <option value="@p" selected="@(ViewBag.Priority == p)">@p</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary btn-sm w-100">
+                    <i class="fas fa-filter me-1"></i>Filter
+                </button>
+            </div>
+            <div class="col-md-2">
+                <a href="/Complaints" class="btn btn-outline-secondary btn-sm w-100">
+                    <i class="fas fa-times me-1"></i>Clear
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Table -->
+<div class="card">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0" id="complaintsTable">
+                <thead class="table-light">
+                    <tr>
+                        <th>#ID</th>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!Model.Any())
+                    {
+                        <tr>
+                            <td colspan="7" class="text-center py-4 text-muted">
+                                <i class="fas fa-inbox fa-2x d-block mb-2"></i>
+                                No complaints found
+                            </td>
+                        </tr>
+                    }
+                    @foreach (var c in Model)
+                    {
+                        <tr>
+                            <td><span class="text-muted">#@c.ComplaintId</span></td>
+                            <td>
+                                <a href="/Complaints/Detail/@c.ComplaintId"
+                                       class="text-dark fw-semibold text-decoration-none">
+                                    @c.Title
+                                </a>
+                            </td>
+                            <td><span class="badge bg-light text-dark border">@c.CategoryName</span></td>
+                            <td>
+                                @{
+                                    var pClass = c.Priority switch
+                                    {
+                                        "High" => "badge-high",
+                                        "Medium" => "badge-medium",
+                                        _ => "badge-low"
+                                    };
+                                }
+                                <span class="badge @pClass">@c.Priority</span>
+                            </td>
+                            <td>
+                                @{
+                                    var sClass = c.Status switch
+                                    {
+                                        "Open" => "badge-open",
+                                        "InProgress" => "badge-inprogress",
+                                        "OnHold" => "badge-onhold",
+                                        "Resolved" => "badge-resolved",
+                                        _ => "badge-closed"
+                                    };
+                                }
+                                <span class="badge @sClass">@c.Status</span>
+                            </td>
+                            <td><small class="text-muted">@c.CreatedDate.ToString("MMM dd, yyyy")</small></td>
+                            <td>
+                                <div class="d-flex gap-1">
+                                    <a href="/Complaints/Detail/@c.ComplaintId"
+                                           class="btn btn-sm btn-outline-primary" title="View">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <a href="/Complaints/Edit/@c.ComplaintId"
+                                               class="btn btn-sm btn-outline-warning" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <button class="btn btn-sm btn-outline-danger" title="Delete"
+                                                onclick="confirmDelete(@c.ComplaintId)">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    }
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Pagination -->
+@if (totalPages > 1)
+{
+    <nav class="mt-3">
+        <ul class="pagination pagination-sm justify-content-center">
+            @for (int i = 1; i <= totalPages; i++)
+            {
+                <li class="page-item @(i == currentPage ? "active" : "")">
+                    <a class="page-link" href="/Complaints?page=@i&status=@ViewBag.Status&priority=@ViewBag.Priority">
+                        @i
+                    </a>
+                </li>
+            }
+        </ul>
+    </nav>
+}
+
+@section Scripts {
+    <script>
+        function confirmDelete(id) {
+            Swal.fire({
+                title: 'Delete Complaint?',
+                text: 'This action cannot be undone.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#EF4444',
+                confirmButtonText: 'Yes, delete!'
+            }).then(r => {
+                if (r.isConfirmed) window.location.href = '/Complaints/Delete/' + id;
+            });
+        }
+
+        @if (TempData["Success"] != null)
+        {
+                <text>toastr.success('@TempData["Success"]');</text>
+        }
+        @if (TempData["Error"] != null)
+        {
+                <text>toastr.error('@TempData["Error"]');</text>
+        }
+    </script>
+}

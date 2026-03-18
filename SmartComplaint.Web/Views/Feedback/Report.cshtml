@@ -1,0 +1,35 @@
+﻿@model SmartComplaint.Web.Models.FeedbackReportModel
+@{
+    ViewData["Title"] = "Feedback Report";
+}
+
+<div class="page-header">
+    <h2><i class="fas fa-chart-line me-2 text-primary"></i>Feedback Report</h2>
+    <p>Overall customer satisfaction metrics</p>
+</div>
+
+<div class="row g-3 justify-content-center">
+    <div class="col-md-4">
+        <div class="stat-card text-center">
+            <div class="mb-2">
+                @for (int i = 1; i <= 5; i++)
+                {
+                    <i class="fas fa-star @(i <= Math.Round(Model.AverageRating) ? "text-warning" : "text-muted")"
+                       style="font-size:24px"></i>
+                }
+            </div>
+            <div class="stat-value">@Model.AverageRating.ToString("F1")</div>
+            <div class="stat-label">Average Rating / 5.0</div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="stat-card text-center">
+            <div class="stat-icon mx-auto mb-2"
+                 style="background:#EEF2FF">
+                <i class="fas fa-comments text-primary"></i>
+            </div>
+            <div class="stat-value">@Model.TotalFeedbacks</div>
+            <div class="stat-label">Total Feedbacks</div>
+        </div>
+    </div>
+</div>

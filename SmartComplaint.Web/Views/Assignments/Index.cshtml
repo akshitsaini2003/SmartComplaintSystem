@@ -1,0 +1,118 @@
+﻿@{
+    ViewData["Title"] = "Assignments";
+    var complaints = ViewBag.Complaints as List<SmartComplaint.Web.Models.ComplaintListModel>
+                     ?? new List<SmartComplaint.Web.Models.ComplaintListModel>();
+    var agents = ViewBag.Agents as List<SmartComplaint.Web.Models.UserModel>
+                 ?? new List<SmartComplaint.Web.Models.UserModel>();
+}
+
+<div class="page-header">
+    <h2><i class="fas fa-user-check me-2 text-primary"></i>Assignment Management</h2>
+    <p>Assign complaints to agents</p>
+</div>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show">
+        <i class="fas fa-check-circle me-2"></i>@TempData["Success"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show">
+        <i class="fas fa-exclamation-circle me-2"></i>@TempData["Error"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+<div class="row g-3">
+    <!-- Assign Form -->
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-plus-circle me-2"></i>New Assignment
+            </div>
+            <div class="card-body">
+                @if (!complaints.Any())
+                {
+                    <div class="text-center py-3 text-muted">
+                        <i class="fas fa-check-circle fa-2x text-success mb-2 d-block"></i>
+                        All complaints are assigned!
+                    </div>
+                }
+                else
+                {
+                    <form method="post" action="/Assignments/Assign">
+                        @Html.AntiForgeryToken()
+                        <div class="mb-3">
+                            <label class="form-label">Select Complaint</label>
+                            <select name="complaintId" class="form-select" required>
+                                <option value="">— Choose Complaint —</option>
+                                @foreach (var c in complaints)
+                                {
+                                    <option value="@c.ComplaintId">
+                                        #@c.ComplaintId — @c.Title.Substring(0, Math.Min(30, c.Title.Length))...
+                                    </option>
+                                }
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Select Agent</label>
+                            <select name="agentId" class="form-select" required>
+                                <option value="">— Choose Agent —</option>
+                                @foreach (var a in agents)
+                                {
+                                    <option value="@a.UserId">@a.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i class="fas fa-user-check me-2"></i>Assign
+                        </button>
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Agents Overview -->
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-users me-2"></i>Available Agents
+            </div>
+            <div class="card-body">
+                @if (!agents.Any())
+                {
+                    <p class="text-muted text-center py-3">No agents found.</p>
+                }
+                else
+                {
+                    <div class="row g-3">
+                        @foreach (var a in agents)
+                        {
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-center gap-3 p-3
+                                    border rounded-3">
+                                    <div class="rounded-circle bg-warning text-dark d-flex
+                                        align-items-center justify-content-center"
+                                         style="width:42px;height:42px;font-size:15px;
+                                        font-weight:700;flex-shrink:0">
+                                        @a.Name[0].ToString().ToUpper()
+                                    </div>
+                                    <div>
+                                        <div class="fw-semibold" style="font-size:14px">
+                                            @a.Name
+                                        </div>
+                                        <small class="text-muted">@a.Email</small>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

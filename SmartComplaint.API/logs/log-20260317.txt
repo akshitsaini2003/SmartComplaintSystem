@@ -1,0 +1,268 @@
+2026-03-17 12:36:42.236 +05:30 [INF] Start installing Hangfire SQL objects...
+2026-03-17 12:37:15.713 +05:30 [INF] Hangfire SQL objects installed.
+2026-03-17 12:37:16.405 +05:30 [INF] Starting Hangfire Server using job storage: 'SQL Server: DESKTOP-GLF3FPU\SQLEXPRESS@SmartComplaintDB'
+2026-03-17 12:37:16.410 +05:30 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-03-17 12:37:16.416 +05:30 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-03-17 12:37:16.533 +05:30 [INF] Server desktop-glf3fpu:3636:bcdf318f successfully announced in 51.8449 ms
+2026-03-17 12:37:16.541 +05:30 [INF] Server desktop-glf3fpu:3636:bcdf318f is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, SqlServerHeartbeatProcess, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-03-17 12:37:16.585 +05:30 [INF] 1 servers were removed due to timeout
+2026-03-17 12:37:16.805 +05:30 [INF] Server desktop-glf3fpu:3636:bcdf318f all the dispatchers started
+2026-03-17 12:37:38.494 +05:30 [INF] HTTP GET /api/dashboard/admin responded 401 in 253.7409ms
+2026-03-17 12:37:39.364 +05:30 [INF] HTTP GET /api/notifications responded 401 in 11.8670ms
+2026-03-17 12:37:49.087 +05:30 [INF] HTTP GET /api/dashboard/reports responded 401 in 2.4471ms
+2026-03-17 12:37:49.105 +05:30 [INF] HTTP GET /api/users/agents responded 401 in 0.3688ms
+2026-03-17 12:37:49.267 +05:30 [INF] HTTP GET /api/notifications responded 401 in 1.0753ms
+2026-03-17 12:37:54.636 +05:30 [INF] HTTP GET /api/complaints responded 401 in 0.3987ms
+2026-03-17 12:37:54.772 +05:30 [INF] HTTP GET /api/notifications responded 401 in 0.5312ms
+2026-03-17 12:37:56.081 +05:30 [INF] HTTP GET /api/dashboard/admin responded 401 in 0.4226ms
+2026-03-17 12:37:56.161 +05:30 [INF] HTTP GET /api/notifications responded 401 in 0.7799ms
+2026-03-17 12:38:06.037 +05:30 [INF] HTTP GET /api/users/agents responded 401 in 1.2817ms
+2026-03-17 12:38:34.851 +05:30 [INF] HTTP GET /api/users responded 401 in 0.8334ms
+2026-03-17 12:38:34.973 +05:30 [INF] HTTP GET /api/notifications responded 401 in 0.3499ms
+2026-03-17 12:38:36.399 +05:30 [INF] HTTP GET /api/complaints responded 401 in 0.6438ms
+2026-03-17 12:38:36.484 +05:30 [INF] HTTP GET /api/notifications responded 401 in 0.4912ms
+2026-03-17 12:38:37.655 +05:30 [INF] HTTP GET /api/users responded 401 in 1.1622ms
+2026-03-17 12:38:37.743 +05:30 [INF] HTTP GET /api/notifications responded 401 in 1.2655ms
+2026-03-17 12:38:46.743 +05:30 [INF] HTTP GET /api/dashboard/reports responded 401 in 0.4119ms
+2026-03-17 12:38:46.763 +05:30 [INF] HTTP GET /api/users/agents responded 401 in 0.3295ms
+2026-03-17 12:38:46.844 +05:30 [INF] HTTP GET /api/notifications responded 401 in 0.4049ms
+2026-03-17 12:38:48.767 +05:30 [INF] HTTP GET /api/notifications responded 401 in 0.5144ms
+2026-03-17 12:38:48.843 +05:30 [INF] HTTP GET /api/notifications responded 401 in 0.4705ms
+2026-03-17 12:38:50.273 +05:30 [INF] HTTP GET /api/complaints responded 401 in 0.3351ms
+2026-03-17 12:38:50.320 +05:30 [INF] HTTP GET /api/users/agents responded 401 in 0.6810ms
+2026-03-17 12:38:50.405 +05:30 [INF] HTTP GET /api/notifications responded 401 in 0.3925ms
+2026-03-17 12:39:00.140 +05:30 [INF] HTTP POST /api/auth/logout responded 200 in 322.6571ms
+2026-03-17 12:39:04.064 +05:30 [INF] User logged in: akshitsaini2003@gmail.com | Role: "User"
+2026-03-17 12:39:04.073 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 358.8647ms
+2026-03-17 12:39:04.256 +05:30 [INF] HTTP GET /api/dashboard/user responded 200 in 142.9687ms
+2026-03-17 12:39:04.428 +05:30 [INF] HTTP GET /api/notifications responded 200 in 51.4862ms
+2026-03-17 12:39:09.444 +05:30 [INF] HTTP GET /api/complaints/my responded 200 in 323.9601ms
+2026-03-17 12:39:09.556 +05:30 [INF] HTTP GET /api/notifications responded 200 in 20.7162ms
+2026-03-17 12:39:12.024 +05:30 [INF] HTTP GET /api/notifications responded 200 in 12.3184ms
+2026-03-17 12:39:12.096 +05:30 [INF] HTTP GET /api/notifications responded 200 in 5.9842ms
+2026-03-17 12:39:15.522 +05:30 [INF] HTTP GET /api/dashboard/user responded 200 in 15.4988ms
+2026-03-17 12:39:15.631 +05:30 [INF] HTTP GET /api/notifications responded 200 in 12.6515ms
+2026-03-17 12:39:19.278 +05:30 [INF] HTTP GET /api/complaints responded 403 in 7.2081ms
+2026-03-17 12:39:19.403 +05:30 [INF] HTTP GET /api/notifications responded 200 in 15.0642ms
+2026-03-17 12:39:22.125 +05:30 [INF] HTTP POST /api/auth/logout responded 200 in 42.1033ms
+2026-03-17 12:39:25.260 +05:30 [INF] User logged in: admin@smartcomplaint.com | Role: "Admin"
+2026-03-17 12:39:25.271 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 229.0302ms
+2026-03-17 12:39:25.450 +05:30 [INF] HTTP GET /api/dashboard/admin responded 200 in 155.6127ms
+2026-03-17 12:39:25.619 +05:30 [INF] HTTP GET /api/notifications responded 200 in 35.8706ms
+2026-03-17 12:39:27.253 +05:30 [INF] HTTP GET /api/complaints responded 200 in 133.7551ms
+2026-03-17 12:39:27.346 +05:30 [INF] HTTP GET /api/notifications responded 200 in 9.2180ms
+2026-03-17 12:39:29.734 +05:30 [INF] HTTP GET /api/users responded 200 in 27.4556ms
+2026-03-17 12:39:29.828 +05:30 [INF] HTTP GET /api/notifications responded 200 in 9.3132ms
+2026-03-17 12:39:40.979 +05:30 [INF] HTTP PATCH /api/users/7/role responded 200 in 50.5855ms
+2026-03-17 12:39:41.013 +05:30 [INF] HTTP GET /api/users responded 200 in 10.4713ms
+2026-03-17 12:39:41.110 +05:30 [INF] HTTP GET /api/notifications responded 200 in 12.2615ms
+2026-03-17 12:39:44.795 +05:30 [INF] HTTP POST /api/auth/logout responded 200 in 23.7046ms
+2026-03-17 12:39:53.103 +05:30 [INF] User logged in: zncq8e@qabq.com | Role: "Agent"
+2026-03-17 12:39:53.105 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 168.0461ms
+2026-03-17 12:39:53.229 +05:30 [INF] HTTP GET /api/dashboard/agent responded 200 in 92.0528ms
+2026-03-17 12:39:53.321 +05:30 [INF] HTTP GET /api/notifications responded 200 in 8.5481ms
+2026-03-17 12:39:57.134 +05:30 [INF] HTTP GET /api/dashboard/agent responded 200 in 22.9594ms
+2026-03-17 12:39:57.215 +05:30 [INF] HTTP GET /api/notifications responded 200 in 9.9838ms
+2026-03-17 12:39:58.574 +05:30 [INF] HTTP GET /api/notifications responded 200 in 129.1156ms
+2026-03-17 12:39:59.649 +05:30 [INF] HTTP GET /api/notifications responded 200 in 11.6489ms
+2026-03-17 12:39:59.714 +05:30 [INF] HTTP GET /api/notifications responded 200 in 6.7536ms
+2026-03-17 12:40:02.190 +05:30 [INF] HTTP POST /api/auth/logout responded 200 in 24.7863ms
+2026-03-17 12:40:04.717 +05:30 [INF] User logged in: admin@smartcomplaint.com | Role: "Admin"
+2026-03-17 12:40:04.720 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 162.6747ms
+2026-03-17 12:40:04.771 +05:30 [INF] HTTP GET /api/dashboard/admin responded 200 in 28.7482ms
+2026-03-17 12:40:04.892 +05:30 [INF] HTTP GET /api/notifications responded 200 in 13.8039ms
+2026-03-17 12:40:08.427 +05:30 [INF] HTTP GET /api/complaints responded 200 in 20.7580ms
+2026-03-17 12:40:08.463 +05:30 [INF] HTTP GET /api/users/agents responded 200 in 19.1303ms
+2026-03-17 12:40:08.552 +05:30 [INF] HTTP GET /api/notifications responded 200 in 13.5903ms
+2026-03-17 12:40:20.524 +05:30 [INF] HTTP POST /api/assignments responded 200 in 5675.7285ms
+2026-03-17 12:40:20.562 +05:30 [INF] HTTP GET /api/complaints responded 200 in 16.3544ms
+2026-03-17 12:40:20.582 +05:30 [INF] HTTP GET /api/users/agents responded 200 in 6.3976ms
+2026-03-17 12:40:20.666 +05:30 [INF] HTTP GET /api/notifications responded 200 in 14.0258ms
+2026-03-17 12:40:24.726 +05:30 [INF] HTTP POST /api/auth/logout responded 200 in 37.6249ms
+2026-03-17 12:40:28.173 +05:30 [INF] User logged in: zncq8e@qabq.com | Role: "Agent"
+2026-03-17 12:40:28.175 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 164.9265ms
+2026-03-17 12:40:28.221 +05:30 [INF] HTTP GET /api/dashboard/agent responded 200 in 23.3009ms
+2026-03-17 12:40:28.327 +05:30 [INF] HTTP GET /api/notifications responded 200 in 9.9394ms
+2026-03-17 12:40:32.099 +05:30 [INF] HTTP GET /api/notifications responded 200 in 7.9335ms
+2026-03-17 12:40:34.264 +05:30 [INF] HTTP GET /api/notifications responded 200 in 9.6759ms
+2026-03-17 12:40:38.774 +05:30 [INF] HTTP GET /api/notifications responded 200 in 9.1437ms
+2026-03-17 12:40:47.149 +05:30 [INF] HTTP GET /api/dashboard/agent responded 200 in 15.2803ms
+2026-03-17 12:40:47.272 +05:30 [INF] HTTP GET /api/notifications responded 200 in 10.2981ms
+2026-03-17 12:41:22.887 +05:30 [INF] HTTP GET /api/dashboard/agent responded 200 in 23.7609ms
+2026-03-17 12:41:23.028 +05:30 [INF] HTTP GET /api/notifications responded 200 in 10.3796ms
+2026-03-17 12:41:31.014 +05:30 [INF] HTTP GET /api/notifications responded 200 in 8.5421ms
+2026-03-17 12:41:31.104 +05:30 [INF] HTTP GET /api/notifications responded 200 in 12.4819ms
+2026-03-17 12:41:35.304 +05:30 [INF] HTTP GET /api/notifications responded 200 in 17.7858ms
+2026-03-17 12:41:42.983 +05:30 [INF] HTTP GET /api/dashboard/agent responded 200 in 17.9000ms
+2026-03-17 12:41:43.078 +05:30 [INF] HTTP GET /api/notifications responded 200 in 9.2999ms
+2026-03-17 12:41:53.573 +05:30 [INF] HTTP GET /api/notifications responded 200 in 5.8757ms
+2026-03-17 12:41:53.639 +05:30 [INF] HTTP GET /api/notifications responded 200 in 5.6255ms
+2026-03-17 12:42:02.175 +05:30 [INF] HTTP GET /api/notifications responded 200 in 13.0107ms
+2026-03-17 12:42:34.913 +05:30 [INF] HTTP GET /api/dashboard/agent responded 200 in 25.3843ms
+2026-03-17 12:42:35.031 +05:30 [INF] HTTP GET /api/notifications responded 200 in 9.8593ms
+2026-03-17 12:42:38.371 +05:30 [INF] HTTP GET /api/notifications responded 200 in 6.4506ms
+2026-03-17 12:42:47.589 +05:30 [INF] HTTP GET /api/complaints responded 200 in 22.5391ms
+2026-03-17 12:42:47.905 +05:30 [INF] HTTP GET /api/notifications responded 200 in 10.9003ms
+2026-03-17 12:42:59.913 +05:30 [INF] HTTP GET /api/dashboard/agent responded 200 in 29.3160ms
+2026-03-17 12:43:00.058 +05:30 [INF] HTTP GET /api/notifications responded 200 in 8.0440ms
+2026-03-17 12:43:56.475 +05:30 [INF] HTTP GET /api/notifications responded 200 in 23.4087ms
+2026-03-17 12:43:56.581 +05:30 [INF] HTTP GET /api/notifications responded 200 in 10.0233ms
+2026-03-17 12:43:59.769 +05:30 [INF] HTTP GET /api/notifications responded 200 in 6.3480ms
+2026-03-17 12:44:11.558 +05:30 [INF] HTTP GET /api/complaints responded 200 in 27.6471ms
+2026-03-17 12:44:11.723 +05:30 [INF] HTTP GET /api/notifications responded 200 in 8.7524ms
+2026-03-17 12:44:30.753 +05:30 [INF] Start installing Hangfire SQL objects...
+2026-03-17 12:44:31.238 +05:30 [INF] Hangfire SQL objects installed.
+2026-03-17 12:44:31.954 +05:30 [INF] Starting Hangfire Server using job storage: 'SQL Server: DESKTOP-GLF3FPU\SQLEXPRESS@SmartComplaintDB'
+2026-03-17 12:44:31.964 +05:30 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-03-17 12:44:31.966 +05:30 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-03-17 12:44:32.024 +05:30 [INF] Server desktop-glf3fpu:16740:8373934b successfully announced in 28.3141 ms
+2026-03-17 12:44:32.036 +05:30 [INF] Server desktop-glf3fpu:16740:8373934b is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, SqlServerHeartbeatProcess, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-03-17 12:44:32.367 +05:30 [INF] Server desktop-glf3fpu:16740:8373934b all the dispatchers started
+2026-03-17 12:44:33.666 +05:30 [INF] HTTP GET /api/dashboard/agent responded 200 in 1111.0568ms
+2026-03-17 12:44:34.271 +05:30 [INF] HTTP GET /api/notifications responded 200 in 99.6176ms
+2026-03-17 12:44:37.499 +05:30 [INF] HTTP GET /api/complaints responded 200 in 260.6299ms
+2026-03-17 12:44:37.718 +05:30 [INF] HTTP GET /api/notifications responded 200 in 15.8952ms
+2026-03-17 12:44:42.715 +05:30 [INF] HTTP GET /api/complaints/3 responded 200 in 40.1188ms
+2026-03-17 12:44:42.773 +05:30 [INF] HTTP GET /api/comments/3 responded 200 in 37.5254ms
+2026-03-17 12:44:42.808 +05:30 [INF] HTTP GET /api/complaints/3/attach responded 200 in 20.5556ms
+2026-03-17 12:44:42.951 +05:30 [INF] HTTP GET /api/notifications responded 200 in 21.5025ms
+2026-03-17 12:44:47.992 +05:30 [INF] HTTP GET /api/complaints/2 responded 200 in 16.9401ms
+2026-03-17 12:44:48.038 +05:30 [INF] HTTP GET /api/comments/2 responded 200 in 23.9594ms
+2026-03-17 12:44:48.070 +05:30 [INF] HTTP GET /api/complaints/2/attach responded 200 in 12.1791ms
+2026-03-17 12:44:48.177 +05:30 [INF] HTTP GET /api/notifications responded 200 in 14.4364ms
+2026-03-17 12:45:07.215 +05:30 [INF] HTTP GET /api/complaints/3 responded 200 in 11.8087ms
+2026-03-17 12:45:07.238 +05:30 [INF] HTTP GET /api/comments/3 responded 200 in 9.3623ms
+2026-03-17 12:45:07.259 +05:30 [INF] HTTP GET /api/complaints/3/attach responded 200 in 8.8562ms
+2026-03-17 12:45:07.347 +05:30 [INF] HTTP GET /api/notifications responded 200 in 19.4988ms
+2026-03-17 12:46:08.597 +05:30 [INF] HTTP GET /api/complaints/2 responded 200 in 18.4938ms
+2026-03-17 12:46:08.630 +05:30 [INF] HTTP GET /api/comments/2 responded 200 in 17.0132ms
+2026-03-17 12:46:08.676 +05:30 [INF] HTTP GET /api/complaints/2/attach responded 200 in 12.8335ms
+2026-03-17 12:46:08.782 +05:30 [INF] HTTP GET /api/notifications responded 200 in 9.1324ms
+2026-03-17 12:46:13.089 +05:30 [INF] HTTP GET /api/complaints/3 responded 200 in 16.6752ms
+2026-03-17 12:46:13.113 +05:30 [INF] HTTP GET /api/comments/3 responded 200 in 6.7177ms
+2026-03-17 12:46:13.138 +05:30 [INF] HTTP GET /api/complaints/3/attach responded 200 in 9.2979ms
+2026-03-17 12:46:13.227 +05:30 [INF] HTTP GET /api/notifications responded 200 in 11.5815ms
+2026-03-17 13:21:55.047 +05:30 [INF] 1 servers were removed due to timeout
+2026-03-17 14:19:11.601 +05:30 [INF] Start installing Hangfire SQL objects...
+2026-03-17 14:19:12.126 +05:30 [INF] Hangfire SQL objects installed.
+2026-03-17 14:19:13.004 +05:30 [INF] Starting Hangfire Server using job storage: 'SQL Server: DESKTOP-GLF3FPU\SQLEXPRESS@SmartComplaintDB'
+2026-03-17 14:19:13.007 +05:30 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-03-17 14:19:13.020 +05:30 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-03-17 14:19:13.078 +05:30 [INF] Server desktop-glf3fpu:5480:1cf3179a successfully announced in 23.667 ms
+2026-03-17 14:19:13.091 +05:30 [INF] Server desktop-glf3fpu:5480:1cf3179a is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, SqlServerHeartbeatProcess, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-03-17 14:19:13.118 +05:30 [INF] 1 servers were removed due to timeout
+2026-03-17 14:19:13.389 +05:30 [INF] Server desktop-glf3fpu:5480:1cf3179a all the dispatchers started
+2026-03-17 14:19:13.846 +05:30 [INF] HTTP GET /api/dashboard/agent responded 401 in 265.8958ms
+2026-03-17 14:19:16.453 +05:30 [INF] HTTP GET /api/notifications responded 401 in 16.6033ms
+2026-03-17 14:19:20.359 +05:30 [INF] HTTP GET /api/dashboard/agent responded 401 in 3.0871ms
+2026-03-17 14:19:20.472 +05:30 [INF] HTTP GET /api/notifications responded 401 in 0.6661ms
+2026-03-17 14:19:22.805 +05:30 [INF] HTTP GET /api/dashboard/agent responded 401 in 1.0339ms
+2026-03-17 14:19:22.911 +05:30 [INF] HTTP GET /api/notifications responded 401 in 0.6678ms
+2026-03-17 14:19:23.988 +05:30 [INF] HTTP GET /api/dashboard/agent responded 401 in 0.7257ms
+2026-03-17 14:19:24.104 +05:30 [INF] HTTP GET /api/notifications responded 401 in 0.5439ms
+2026-03-17 14:19:24.911 +05:30 [INF] HTTP GET /api/dashboard/agent responded 401 in 8.5712ms
+2026-03-17 14:19:25.031 +05:30 [INF] HTTP GET /api/notifications responded 401 in 0.7986ms
+2026-03-17 14:19:25.916 +05:30 [INF] HTTP GET /api/dashboard/agent responded 401 in 1.6309ms
+2026-03-17 14:19:26.045 +05:30 [INF] HTTP GET /api/notifications responded 401 in 0.5143ms
+2026-03-17 14:19:27.033 +05:30 [INF] HTTP GET /api/complaints responded 401 in 0.5811ms
+2026-03-17 14:19:27.263 +05:30 [INF] HTTP GET /api/notifications responded 401 in 0.4487ms
+2026-03-17 14:19:35.024 +05:30 [INF] HTTP POST /api/auth/logout responded 200 in 280.5864ms
+2026-03-17 14:19:37.918 +05:30 [INF] User logged in: zncq8e@qabq.com | Role: "Agent"
+2026-03-17 14:19:37.926 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 390.9615ms
+2026-03-17 14:19:38.301 +05:30 [INF] HTTP GET /api/dashboard/agent responded 200 in 325.7399ms
+2026-03-17 14:19:38.493 +05:30 [INF] HTTP GET /api/notifications responded 200 in 65.8370ms
+2026-03-17 14:19:40.695 +05:30 [INF] HTTP GET /api/assignments/agent/0 responded 200 in 61.9452ms
+2026-03-17 14:19:40.790 +05:30 [INF] HTTP GET /api/notifications responded 200 in 16.2298ms
+2026-03-17 14:19:44.905 +05:30 [INF] HTTP GET /api/assignments/agent/0 responded 200 in 32.9353ms
+2026-03-17 14:19:45.025 +05:30 [INF] HTTP GET /api/notifications responded 200 in 17.1785ms
+2026-03-17 14:19:49.066 +05:30 [INF] HTTP GET /api/notifications responded 200 in 15.7925ms
+2026-03-17 14:19:49.157 +05:30 [INF] HTTP GET /api/notifications responded 200 in 8.9666ms
+2026-03-17 14:19:53.675 +05:30 [INF] HTTP GET /api/dashboard/agent responded 200 in 27.0061ms
+2026-03-17 14:19:53.761 +05:30 [INF] HTTP GET /api/notifications responded 200 in 13.2867ms
+2026-03-17 14:20:35.616 +05:30 [INF] HTTP POST /api/auth/logout responded 200 in 471.7919ms
+2026-03-17 14:20:38.286 +05:30 [INF] User logged in: zncq8e@qabq.com | Role: "Agent"
+2026-03-17 14:20:38.295 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 397.2201ms
+2026-03-17 14:20:38.391 +05:30 [INF] HTTP GET /api/dashboard/agent responded 200 in 46.6317ms
+2026-03-17 14:20:38.657 +05:30 [INF] HTTP GET /api/notifications responded 200 in 52.5485ms
+2026-03-17 14:20:44.242 +05:30 [INF] HTTP GET /api/assignments/agent/0 responded 200 in 2167.0828ms
+2026-03-17 14:20:47.210 +05:30 [INF] HTTP GET /api/assignments/agent/0 responded 200 in 625.3577ms
+2026-03-17 14:20:47.233 +05:30 [INF] HTTP GET /api/notifications responded 200 in 2898.8623ms
+2026-03-17 14:20:49.428 +05:30 [INF] HTTP GET /api/notifications responded 200 in 2125.5292ms
+2026-03-17 14:21:00.028 +05:30 [INF] HTTP GET /api/dashboard/agent responded 200 in 10511.4255ms
+2026-03-17 14:21:00.142 +05:30 [INF] HTTP GET /api/notifications responded 200 in 16.2134ms
+2026-03-17 14:21:09.367 +05:30 [INF] HTTP GET /api/notifications responded 200 in 4100.3498ms
+2026-03-17 14:21:10.410 +05:30 [INF] HTTP GET /api/notifications responded 200 in 944.5764ms
+2026-03-17 14:21:13.636 +05:30 [INF] HTTP GET /api/assignments/agent/0 responded 200 in 13.4531ms
+2026-03-17 14:21:13.722 +05:30 [INF] HTTP GET /api/notifications responded 200 in 11.1704ms
+2026-03-17 14:21:21.442 +05:30 [INF] HTTP GET /api/assignments/agent/0 responded 200 in 11.2317ms
+2026-03-17 14:21:21.556 +05:30 [INF] HTTP GET /api/notifications responded 200 in 13.1724ms
+2026-03-17 14:21:23.614 +05:30 [INF] HTTP GET /api/dashboard/agent responded 200 in 36.3314ms
+2026-03-17 14:21:23.711 +05:30 [INF] HTTP GET /api/notifications responded 200 in 7.7942ms
+2026-03-17 14:21:31.692 +05:30 [INF] HTTP GET /api/dashboard/agent responded 200 in 12.6484ms
+2026-03-17 14:21:31.793 +05:30 [INF] HTTP GET /api/notifications responded 200 in 10.2821ms
+2026-03-17 14:21:33.282 +05:30 [INF] HTTP GET /api/assignments/agent/0 responded 200 in 15.8908ms
+2026-03-17 14:21:33.377 +05:30 [INF] HTTP GET /api/notifications responded 200 in 10.4244ms
+2026-03-17 14:21:35.424 +05:30 [INF] HTTP GET /api/dashboard/agent responded 200 in 23.8566ms
+2026-03-17 14:21:35.521 +05:30 [INF] HTTP GET /api/notifications responded 200 in 9.7346ms
+2026-03-17 14:21:36.869 +05:30 [INF] HTTP GET /api/notifications responded 200 in 24.6730ms
+2026-03-17 14:21:36.961 +05:30 [INF] HTTP GET /api/notifications responded 200 in 6.5691ms
+2026-03-17 14:21:38.259 +05:30 [INF] HTTP GET /api/assignments/agent/0 responded 200 in 7.9551ms
+2026-03-17 14:21:38.342 +05:30 [INF] HTTP GET /api/notifications responded 200 in 7.8861ms
+2026-03-17 14:21:39.621 +05:30 [INF] HTTP GET /api/dashboard/agent responded 200 in 13.1094ms
+2026-03-17 14:21:39.726 +05:30 [INF] HTTP GET /api/notifications responded 200 in 6.3048ms
+2026-03-17 14:21:42.287 +05:30 [INF] HTTP POST /api/auth/logout responded 200 in 31.1721ms
+2026-03-17 14:21:46.606 +05:30 [INF] User logged in: akshitsaini2003@gmail.com | Role: "User"
+2026-03-17 14:21:46.612 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 210.7663ms
+2026-03-17 14:21:46.709 +05:30 [INF] HTTP GET /api/dashboard/user responded 200 in 60.2422ms
+2026-03-17 14:21:46.839 +05:30 [INF] HTTP GET /api/notifications responded 200 in 9.6615ms
+2026-03-17 14:21:50.151 +05:30 [INF] HTTP GET /api/complaints/my responded 200 in 239.2187ms
+2026-03-17 14:21:50.282 +05:30 [INF] HTTP GET /api/notifications responded 200 in 9.4001ms
+2026-03-17 14:21:51.794 +05:30 [INF] HTTP GET /api/complaints responded 403 in 3.9756ms
+2026-03-17 14:21:51.935 +05:30 [INF] HTTP GET /api/notifications responded 200 in 18.1405ms
+2026-03-17 14:21:54.132 +05:30 [INF] HTTP GET /api/dashboard/user responded 200 in 15.6930ms
+2026-03-17 14:21:54.230 +05:30 [INF] HTTP GET /api/notifications responded 200 in 11.1390ms
+2026-03-17 14:21:59.217 +05:30 [INF] HTTP POST /api/auth/logout responded 200 in 17.8950ms
+2026-03-17 14:22:02.792 +05:30 [INF] User logged in: admin@smartcomplaint.com | Role: "Admin"
+2026-03-17 14:22:02.797 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 205.7981ms
+2026-03-17 14:22:02.956 +05:30 [INF] HTTP GET /api/dashboard/admin responded 200 in 129.3902ms
+2026-03-17 14:22:03.127 +05:30 [INF] HTTP GET /api/notifications responded 200 in 11.5652ms
+2026-03-17 14:22:11.140 +05:30 [INF] HTTP GET /api/complaints responded 200 in 49.0414ms
+2026-03-17 14:22:11.247 +05:30 [INF] HTTP GET /api/notifications responded 200 in 7.9155ms
+2026-03-17 14:22:12.829 +05:30 [INF] HTTP GET /api/users responded 200 in 32.5732ms
+2026-03-17 14:22:12.994 +05:30 [INF] HTTP GET /api/notifications responded 200 in 10.9691ms
+2026-03-17 14:22:14.366 +05:30 [INF] HTTP GET /api/complaints responded 200 in 26.7270ms
+2026-03-17 14:22:14.406 +05:30 [INF] HTTP GET /api/users/agents responded 200 in 25.0507ms
+2026-03-17 14:22:14.508 +05:30 [INF] HTTP GET /api/notifications responded 200 in 12.8701ms
+2026-03-17 14:22:27.876 +05:30 [INF] HTTP POST /api/assignments responded 200 in 6709.8578ms
+2026-03-17 14:22:27.931 +05:30 [INF] HTTP GET /api/complaints responded 200 in 21.1760ms
+2026-03-17 14:22:27.967 +05:30 [INF] HTTP GET /api/users/agents responded 200 in 11.3911ms
+2026-03-17 14:22:28.058 +05:30 [INF] HTTP GET /api/notifications responded 200 in 8.2555ms
+2026-03-17 14:22:33.626 +05:30 [INF] HTTP POST /api/auth/logout responded 200 in 25.1099ms
+2026-03-17 14:22:36.389 +05:30 [INF] User logged in: zncq8e@qabq.com | Role: "Agent"
+2026-03-17 14:22:36.394 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 185.9569ms
+2026-03-17 14:22:36.446 +05:30 [INF] HTTP GET /api/dashboard/agent responded 200 in 22.7857ms
+2026-03-17 14:22:36.564 +05:30 [INF] HTTP GET /api/notifications responded 200 in 7.0175ms
+2026-03-17 14:22:39.249 +05:30 [INF] HTTP GET /api/assignments/agent/0 responded 200 in 21.5332ms
+2026-03-17 14:22:39.344 +05:30 [INF] HTTP GET /api/notifications responded 200 in 6.8737ms
+2026-03-17 14:22:45.889 +05:30 [INF] HTTP GET /api/assignments/agent/0 responded 200 in 19.8232ms
+2026-03-17 14:22:46.000 +05:30 [INF] HTTP GET /api/notifications responded 200 in 12.9480ms
+2026-03-17 14:22:55.207 +05:30 [INF] HTTP GET /api/assignments/agent/0 responded 200 in 12.7339ms
+2026-03-17 14:22:55.289 +05:30 [INF] HTTP GET /api/notifications responded 200 in 9.2365ms
+2026-03-17 14:23:10.945 +05:30 [INF] HTTP GET /api/assignments/agent/0 responded 200 in 16.8126ms
+2026-03-17 14:23:11.037 +05:30 [INF] HTTP GET /api/notifications responded 200 in 8.2142ms
+2026-03-17 14:23:12.097 +05:30 [INF] HTTP GET /api/dashboard/agent responded 200 in 17.1761ms
+2026-03-17 14:23:12.187 +05:30 [INF] HTTP GET /api/notifications responded 200 in 11.2473ms
+2026-03-17 14:23:14.097 +05:30 [INF] HTTP GET /api/assignments/agent/0 responded 200 in 6.4567ms
+2026-03-17 14:23:14.187 +05:30 [INF] HTTP GET /api/notifications responded 200 in 8.0528ms

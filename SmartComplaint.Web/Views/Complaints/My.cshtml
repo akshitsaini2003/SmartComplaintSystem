@@ -1,0 +1,247 @@
+﻿@* @model List<SmartComplaint.Web.Models.ComplaintListModel>
+@{
+    ViewData["Title"] = "My Complaints";
+    int currentPage = ViewBag.CurrentPage ?? 1;
+    int totalPages  = ViewBag.TotalPages  ?? 1;
+}
+
+<div class="page-header d-flex justify-content-between align-items-center">
+    <div>
+        <h2><i class="fas fa-file-alt me-2 text-primary"></i>My Complaints</h2>
+        <p>Track your submitted complaints</p>
+    </div>
+    <a href="/Complaints/Create" class="btn btn-primary">
+        <i class="fas fa-plus me-2"></i>New Complaint
+    </a>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="text-center py-5">
+        <i class="fas fa-inbox fa-4x text-muted mb-3 d-block"></i>
+        <h5 class="text-muted">No complaints yet</h5>
+        <a href="/Complaints/Create" class="btn btn-primary mt-2">
+            <i class="fas fa-plus me-2"></i>Submit Your First Complaint
+        </a>
+    </div>
+}
+else
+{
+    <div class="row g-3">
+        @foreach (var c in Model)
+        {
+            @{
+                var sClass = c.Status switch {
+                    "Open"       => "badge-open",
+                    "InProgress" => "badge-inprogress",
+                    "OnHold"     => "badge-onhold",
+                    "Resolved"   => "badge-resolved",
+                    _            => "badge-closed"
+                };
+                var pClass = c.Priority switch {
+                    "High"   => "badge-high",
+                    "Medium" => "badge-medium",
+                    _        => "badge-low"
+                };
+                var borderColor = c.Priority switch {
+                    "High"   => "#EF4444",
+                    "Medium" => "#F59E0B",
+                    _        => "#10B981"
+                };
+            }
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100" style="border-left: 4px solid @borderColor">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="badge @sClass">@c.Status</span>
+                            <span class="badge @pClass">@c.Priority</span>
+                        </div>
+                        <h6 class="card-title fw-semibold">@c.Title</h6>
+                        <p class="text-muted mb-2" style="font-size:12px">
+                            <i class="fas fa-tag me-1"></i>@c.CategoryName
+                        </p>
+                        <p class="text-muted mb-3" style="font-size:11px">
+                            <i class="fas fa-calendar me-1"></i>
+                            @c.CreatedDate.ToString("MMM dd, yyyy")
+                        </p>
+                        <a href="/Complaints/Detail/@c.ComplaintId"
+                           class="btn btn-sm btn-outline-primary w-100">
+                            <i class="fas fa-eye me-1"></i>View Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    @if (totalPages > 1)
+    {
+        <nav class="mt-4">
+            <ul class="pagination pagination-sm justify-content-center">
+                @for (int i = 1; i <= totalPages; i++)
+                {
+                    <li class="page-item @(i == currentPage ? "active" : "")">
+                        <a class="page-link" href="/Complaints/My?page=@i">@i</a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    }
+} *@
+@model List<SmartComplaint.Web.Models.ComplaintListModel>
+
+@{
+    ViewData["Title"] = "My Complaints";
+
+    int currentPage = ViewBag.CurrentPage ?? 1;
+    int totalPages = ViewBag.TotalPages ?? 1;
+}
+
+<div class="page-header d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="fw-bold">
+            <i class="fas fa-file-alt me-2 text-primary"></i>My Complaints
+        </h2>
+        <p class="text-muted mb-0">Track your submitted complaints</p>
+    </div>
+
+    <a asp-controller="Complaints" asp-action="Create" class="btn btn-primary">
+        <i class="fas fa-plus me-2"></i>New Complaint
+    </a>
+</div>
+
+
+@if (Model == null || !Model.Any())
+{
+    <div class="text-center py-5">
+        <i class="fas fa-inbox fa-4x text-muted mb-3 d-block"></i>
+
+        <h5 class="text-muted">No complaints found</h5>
+
+        <a asp-controller="Complaints" asp-action="Create" class="btn btn-primary mt-3">
+            <i class="fas fa-plus me-2"></i>Submit Your First Complaint
+        </a>
+    </div>
+}
+else
+{
+    <div class="row g-3">
+
+        @foreach (var c in Model)
+        {
+            string sClass = "";
+            string pClass = "";
+            string borderColor = "";
+
+            switch (c.Status)
+            {
+                case "Open":
+                    sClass = "badge-open";
+                    break;
+
+                case "InProgress":
+                    sClass = "badge-inprogress";
+                    break;
+
+                case "OnHold":
+                    sClass = "badge-onhold";
+                    break;
+
+                case "Resolved":
+                    sClass = "badge-resolved";
+                    break;
+
+                default:
+                    sClass = "badge-closed";
+                    break;
+            }
+
+            switch (c.Priority)
+            {
+                case "High":
+                    pClass = "badge-high";
+                    borderColor = "#EF4444";
+                    break;
+
+                case "Medium":
+                    pClass = "badge-medium";
+                    borderColor = "#F59E0B";
+                    break;
+
+                default:
+                    pClass = "badge-low";
+                    borderColor = "#10B981";
+                    break;
+            }
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="card h-100 shadow-sm" style="border-left:4px solid @borderColor">
+
+                    <div class="card-body">
+
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="badge @sClass">@c.Status</span>
+                            <span class="badge @pClass">@c.Priority</span>
+                        </div>
+
+                        <h6 class="card-title fw-semibold">
+                            @c.Title
+                        </h6>
+
+                        <p class="text-muted mb-2 small">
+                            <i class="fas fa-tag me-1"></i>
+                            @c.CategoryName
+                        </p>
+
+                        <p class="text-muted small mb-3">
+                            <i class="fas fa-calendar me-1"></i>
+                            @c.CreatedDate.ToString("MMM dd, yyyy")
+                        </p>
+
+                        <a asp-controller="Complaints"
+                               asp-action="Detail"
+                               asp-route-id="@c.ComplaintId"
+                               class="btn btn-sm btn-outline-primary w-100">
+
+                            <i class="fas fa-eye me-1"></i>
+                            View Details
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+        }
+
+    </div>
+
+
+    @if (totalPages > 1)
+    {
+        <nav class="mt-4">
+
+            <ul class="pagination pagination-sm justify-content-center">
+
+                @for (int i = 1; i <= totalPages; i++)
+                {
+                    <li class="page-item @(i == currentPage ? "active" : "")">
+
+                        <a class="page-link"
+                               asp-controller="Complaints"
+                               asp-action="My"
+                               asp-route-page="@i">
+
+                            @i
+
+                        </a>
+
+                    </li>
+                }
+
+            </ul>
+
+        </nav>
+    }
+}

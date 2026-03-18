@@ -1,0 +1,169 @@
+﻿@model SmartComplaint.Web.Models.VerifyOtpViewModel
+@{ Layout = null; }
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Verify OTP</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="~/css/site.css"/>
+    <style>
+        .otp-input {
+            width: 48px; height: 52px; text-align: center;
+            font-size: 22px; font-weight: 700; border-radius: 10px;
+            border: 2px solid #E2E8F0;
+        }
+        .otp-input:focus { border-color: #4F46E5; outline: none; box-shadow: 0 0 0 3px #EEF2FF; }
+        .timer-circle {
+            width: 60px; height: 60px; border-radius: 50%;
+            border: 3px solid #4F46E5;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 16px; font-weight: 700; color: #4F46E5;
+            margin: 0 auto 16px;
+        }
+
+        [data-theme="dark"] .auth-page {
+    background: linear-gradient(135deg, #0F172A 0%, #1E1B4B 100%);
+}
+[data-theme="dark"] .auth-card {
+    background: #1E293B;
+    color: #F1F5F9;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+[data-theme="dark"] .auth-card .text-muted { color: #64748B !important; }
+[data-theme="dark"] .auth-card .form-label { color: #CBD5E1; }
+[data-theme="dark"] .auth-card .form-control,
+[data-theme="dark"] .auth-card .form-select {
+    background: #0F172A;
+    border-color: #334155;
+    color: #F1F5F9;
+}
+[data-theme="dark"] .auth-card .form-control::placeholder { color: #475569; }
+[data-theme="dark"] .auth-card .input-group-text {
+    background: #263348;
+    border-color: #334155;
+    color: #94A3B8;
+}
+[data-theme="dark"] .auth-card hr { border-color: #334155; }
+[data-theme="dark"] .auth-card h4 { color: #F1F5F9; }
+    </style>
+    <script>
+    // Apply saved theme before page renders (no flash)
+    (function() {
+        const t = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', t);
+    })();
+</script>
+</head>
+<body>
+<div class="auth-page">
+    <div class="auth-card">
+        <div class="auth-logo">
+            <i class="fas fa-shield-alt"></i>
+            <h4>Verify Your Email</h4>
+            <p class="text-muted" style="font-size:13px">
+                Enter the 6-digit OTP sent to<br/>
+                <strong>@Model.Email</strong>
+            </p>
+        </div>
+
+        <div class="timer-circle" id="timerCircle">10:00</div>
+
+        <form method="post" id="otpForm">
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="Email"/>
+
+            <div class="d-flex justify-content-center gap-2 mb-4">
+                <input class="form-control otp-input" maxlength="1" id="d1" type="text" inputmode="numeric"/>
+                <input class="form-control otp-input" maxlength="1" id="d2" type="text" inputmode="numeric"/>
+                <input class="form-control otp-input" maxlength="1" id="d3" type="text" inputmode="numeric"/>
+                <input class="form-control otp-input" maxlength="1" id="d4" type="text" inputmode="numeric"/>
+                <input class="form-control otp-input" maxlength="1" id="d5" type="text" inputmode="numeric"/>
+                <input class="form-control otp-input" maxlength="1" id="d6" type="text" inputmode="numeric"/>
+            </div>
+
+            <input type="hidden" asp-for="OTP" id="otpFull"/>
+
+            <button type="submit" class="btn btn-primary w-100 py-2" id="verifyBtn">
+                <i class="fas fa-check-circle me-2"></i>Verify OTP
+            </button>
+        </form>
+
+        <div class="text-center mt-3">
+            <a href="/Auth/Login" class="text-muted" style="font-size:13px">
+                <i class="fas fa-arrow-left me-1"></i>Back to Login
+            </a>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script>
+    toastr.options = { positionClass:"toast-top-right", timeOut:4000, closeButton:true };
+
+    @if (TempData["Error"] != null)
+    {
+        <text>toastr.error('@TempData["Error"]');</text>
+    }
+    @if (TempData["Success"] != null)
+    {
+        <text>toastr.success('@TempData["Success"]');</text>
+    }
+
+    // OTP digit auto-focus
+    const digits = ['d1','d2','d3','d4','d5','d6'];
+    digits.forEach((id, i) => {
+        const el = document.getElementById(id);
+        el.addEventListener('input', () => {
+            if (el.value && i < 5) document.getElementById(digits[i+1]).focus();
+            updateOtp();
+        });
+        el.addEventListener('keydown', e => {
+            if (e.key === 'Backspace' && !el.value && i > 0)
+                document.getElementById(digits[i-1]).focus();
+        });
+    });
+
+    function updateOtp() {
+        document.getElementById('otpFull').value =
+            digits.map(id => document.getElementById(id).value).join('');
+    }
+
+    // 10-minute countdown
+    let seconds = 600;
+    const timer = setInterval(() => {
+        seconds--;
+        const m = Math.floor(seconds / 60).toString().padStart(2,'0');
+        const s = (seconds % 60).toString().padStart(2,'0');
+        document.getElementById('timerCircle').textContent = `${m}:${s}`;
+        if (seconds <= 0) {
+            clearInterval(timer);
+            document.getElementById('timerCircle').textContent = '0:00';
+            document.getElementById('timerCircle').style.borderColor = '#EF4444';
+            document.getElementById('timerCircle').style.color = '#EF4444';
+            toastr.error('OTP expired. Please register again.');
+            document.getElementById('verifyBtn').prop('disabled', true);
+        }
+    }, 1000);
+
+    $('#otpForm').on('submit', function() {
+        updateOtp();
+        if ($('#otpFull').val().length < 6) {
+            toastr.warning('Please enter all 6 digits');
+            return false;
+        }
+        $('#verifyBtn').html('<i class="fas fa-spinner fa-spin me-2"></i>Verifying...')
+                       .prop('disabled', true);
+    });
+
+    // Auto focus first digit
+    document.getElementById('d1').focus();
+</script>
+</body>
+</html>

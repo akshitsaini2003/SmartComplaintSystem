@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "SmartComplaint.API\\SmartComplaint.API.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "SmartComplaint.Web\\SmartComplaint.Web.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

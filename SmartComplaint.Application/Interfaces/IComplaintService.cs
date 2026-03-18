@@ -1,4 +1,5 @@
 ﻿using SmartComplaint.Application.DTOs;
+using SmartComplaint.Domain.Entities;
 
 namespace SmartComplaint.Application.Interfaces;
 
@@ -11,4 +12,7 @@ public interface IComplaintService
     Task<string> DeleteAsync(int id);
     Task<PagedResult<ComplaintListDto>> GetMyComplaintsAsync(int userId, int page, int pageSize);
     Task<string> UpdateStatusAsync(int id, UpdateStatusDto dto, string changedBy);
+    //Task<IEnumerable<ComplaintHistory>> GetHistoryAsync(int complaintId);
+
+    Task<IEnumerable<ComplaintHistoryDto>> GetHistoryAsync(int complaintId);
 }

@@ -21,6 +21,7 @@ public class LoginDto
 
 public class LoginResponseDto
 {
+    public int UserId { get; set; }  // ← ADD karo
     public string AccessToken { get; set; } = string.Empty;
     public string RefreshToken { get; set; } = string.Empty;
     public string Name { get; set; } = string.Empty;

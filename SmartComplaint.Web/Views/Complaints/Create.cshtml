@@ -1,0 +1,107 @@
+﻿@model SmartComplaint.Web.Models.CreateComplaintModel
+@{
+    ViewData["Title"] = "New Complaint";
+    var categories = ViewBag.Categories as List<SmartComplaint.Web.Models.CategoryModel>
+                     ?? new List<SmartComplaint.Web.Models.CategoryModel>();
+}
+
+<div class="page-header">
+    <h2><i class="fas fa-plus-circle me-2 text-primary"></i>Submit New Complaint</h2>
+    <p>Describe your issue and we'll help you resolve it</p>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-edit me-2"></i>Complaint Details
+            </div>
+            <div class="card-body">
+                <form method="post" id="createForm">
+                    @Html.AntiForgeryToken()
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">
+                            Title <span class="text-danger">*</span>
+                        </label>
+                        <input asp-for="Title" class="form-control"
+                               placeholder="Brief description of the issue" required
+                               maxlength="200" />
+                        <div class="form-text">Max 200 characters</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">
+                            Description <span class="text-danger">*</span>
+                        </label>
+                        <textarea asp-for="Description" class="form-control" rows="5"
+                                  placeholder="Detailed description of your issue..." required
+                                  id="descField"></textarea>
+                        <div class="d-flex justify-content-between">
+                            <div class="form-text">
+                                <i class="fas fa-magic me-1 text-primary"></i>
+                                Smart priority detection — keywords like "server down" auto-set High priority
+                            </div>
+                            <small class="text-muted" id="charCount">0 chars</small>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">
+                                Category <span class="text-danger">*</span>
+                            </label>
+                            <select asp-for="CategoryId" class="form-select" required>
+                                <option value="">— Select Category —</option>
+                                @foreach (var cat in categories)
+                                {
+                                    <option value="@cat.CategoryId">@cat.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">
+                                Priority
+                                <span class="badge bg-light text-muted border ms-1"
+                                      style="font-size:10px">Optional — auto-detected</span>
+                            </label>
+                            <select asp-for="Priority" class="form-select">
+                                <option value="">Auto Detect</option>
+                                <option value="High">🔴 High</option>
+                                <option value="Medium">🟡 Medium</option>
+                                <option value="Low">🟢 Low</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-2 justify-content-end">
+                        <a href="/Complaints/My" class="btn btn-outline-secondary">
+                            <i class="fas fa-times me-2"></i>Cancel
+                        </a>
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
+                            <i class="fas fa-paper-plane me-2"></i>Submit Complaint
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        @if (TempData["Error"] != null)
+        {
+                <text>toastr.error('@TempData["Error"]');</text>
+        }
+
+        $('#descField').on('input', function() {
+            $('#charCount').text($(this).val().length + ' chars');
+        });
+
+        $('#createForm').on('submit', function() {
+            $('#submitBtn').html('<i class="fas fa-spinner fa-spin me-2"></i>Submitting...')
+                           .prop('disabled', true);
+        });
+    </script>
+}

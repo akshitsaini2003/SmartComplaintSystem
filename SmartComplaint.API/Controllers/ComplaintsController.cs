@@ -119,4 +119,19 @@ public class ComplaintsController : ControllerBase
         }
         catch (Exception ex) { return BadRequest(new { message = ex.Message }); }
     }
+
+    // GET /api/complaints/{id}/history
+    [HttpGet("{id}/history")]
+    public async Task<IActionResult> GetHistory(int id)
+    {
+        try
+        {
+            var history = await _service.GetHistoryAsync(id);
+            return Ok(history);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+    }
 }

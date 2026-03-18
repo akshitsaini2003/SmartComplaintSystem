@@ -225,4 +225,27 @@ public class ComplaintService : IComplaintService
 
         return allowed.ContainsKey(current) && allowed[current].Contains(next);
     }
+
+    //public async Task<IEnumerable<ComplaintHistory>> GetHistoryAsync(int complaintId)
+    //{
+    //    return await _uow.ComplaintHistories
+    //        .FindAsync(h => h.ComplaintId == complaintId);
+    //}
+    public async Task<IEnumerable<ComplaintHistoryDto>> GetHistoryAsync(int complaintId)
+    {
+        var histories = await _uow.ComplaintHistories
+            .FindAsync(h => h.ComplaintId == complaintId);
+
+        return histories
+            .OrderBy(h => h.ChangedDate)
+            .Select(h => new ComplaintHistoryDto
+            {
+                HistoryId = h.HistoryId,
+                ComplaintId = h.ComplaintId,
+                OldStatus = h.OldStatus.ToString(), // ✅ enum → string
+                NewStatus = h.NewStatus.ToString(), // ✅ enum → string
+                ChangedDate = h.ChangedDate,
+                ChangedBy = h.ChangedBy,
+            });
+    }
 }
